@@ -29,3 +29,26 @@ footer{text-align:center;padding:23px;background:#020812;border-top:1px solid #1
 @media(max-width:430px){.cards{grid-template-columns:1fr}.hero-left h1{font-size:53px}.hero-left h2{font-size:34px}.tagline{gap:8px}.why-grid{grid-template-columns:1fr 1fr}.socials{left:48%}}
 
 @media(max-width:700px){nav.open{display:flex;position:absolute;top:65px;left:0;right:0;height:auto;padding:18px;flex-direction:column;gap:18px;background:#050d1a;border-bottom:1px solid #263448}nav.open a:after{bottom:-5px}}
+/* =========================
+   CLICKABLE SERVICE CARDS
+========================= */
+
+.service-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+
+.service-link {
+  display: inline-block;
+  margin-top: 18px;
+  color: var(--green);
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-link {
+  transform: translateX(6px);
+}
