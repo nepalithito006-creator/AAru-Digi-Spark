@@ -1,21 +1,18 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Aaru Digi Spark | Digital Marketing</title>
 
   <meta
     name="description"
-    content="Aaru Digi Spark — creative digital marketing, content, branding, SEO and growth."
+    content="Aaru Digi Spark — creative digital marketing, content, branding, SEO and web design."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
@@ -23,17 +20,743 @@
     rel="stylesheet"
   >
 
-  <link rel="stylesheet" href="style.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
+    :root {
+      --bg: #050505;
+      --bg2: #0a0a0a;
+      --card: rgba(255,255,255,0.055);
+      --border: rgba(255,255,255,0.11);
+      --white: #ffffff;
+      --muted: #a1a1aa;
+      --purple: #9b7cff;
+      --pink: #ff6bd6;
+      --cyan: #5de6ff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(125,80,255,.12), transparent 30%),
+        radial-gradient(circle at 10% 50%, rgba(0,210,255,.07), transparent 25%),
+        var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 78px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(5,5,5,.72);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: #fff;
+    }
+
+    .logo b {
+      background: linear-gradient(90deg, #fff, #9b7cff, #ff6bd6);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .logo i {
+      color: var(--purple);
+      font-style: normal;
+      font-size: 15px;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      color: #aaa;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: white;
+    }
+
+    .header-btn {
+      padding: 11px 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 100px;
+      font-size: 13px;
+      background: rgba(255,255,255,.05);
+      transition: .3s;
+    }
+
+    .header-btn:hover {
+      background: white;
+      color: black;
+      transform: translateY(-2px);
+    }
+
+    .menu {
+      display: none;
+      background: none;
+      color: white;
+      border: 0;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: calc(100vh - 78px);
+      padding: 100px 7%;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+    }
+
+    .eyebrow {
+      color: #999;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(60px, 8vw, 110px);
+      line-height: .9;
+      letter-spacing: -6px;
+      margin-bottom: 30px;
+    }
+
+    .hero h1 span {
+      color: white;
+    }
+
+    .hero h1 strong {
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #a58aff,
+        #ff72d8
+      );
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero h1 em {
+      color: var(--purple);
+      font-size: 40px;
+      vertical-align: top;
+      font-style: normal;
+    }
+
+    .hero h2 {
+      font-size: clamp(22px, 3vw, 36px);
+      margin-bottom: 22px;
+      font-weight: 600;
+    }
+
+    .hero h2 b {
+      color: var(--purple);
+    }
+
+    .lead {
+      max-width: 600px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 17px;
+      margin-bottom: 35px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      border-radius: 100px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: .3s;
+    }
+
+    .btn.primary {
+      background: white;
+      color: black;
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(255,255,255,.15);
+    }
+
+    .btn.ghost {
+      border: 1px solid rgba(255,255,255,.16);
+      color: white;
+      background: rgba(255,255,255,.04);
+    }
+
+    .btn.ghost:hover {
+      background: rgba(255,255,255,.1);
+      transform: translateY(-3px);
+    }
+
+    .mini-stats {
+      display: flex;
+      gap: 45px;
+      margin-top: 60px;
+    }
+
+    .mini-stats div {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mini-stats b {
+      font-size: 25px;
+    }
+
+    .mini-stats span {
+      color: #777;
+      font-size: 12px;
+    }
+
+    /* ABSTRACT HERO VISUAL */
+
+    .hero-visual {
+      min-height: 530px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .abstract-box {
+      position: relative;
+      width: 410px;
+      height: 410px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 40px;
+      background:
+        linear-gradient(145deg,
+          rgba(255,255,255,.09),
+          rgba(255,255,255,.015)
+        );
+      backdrop-filter: blur(20px);
+      box-shadow:
+        0 40px 100px rgba(0,0,0,.5),
+        inset 0 1px rgba(255,255,255,.12);
+      transform: rotate(-4deg);
+    }
+
+    .abstract-box::before {
+      content: "";
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 30px;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+      animation: float 5s ease-in-out infinite;
+    }
+
+    .orb1 {
+      width: 180px;
+      height: 180px;
+      top: 35px;
+      left: 40px;
+      background: radial-gradient(circle at 30% 30%, #d7c9ff, #724aff 60%, transparent 72%);
+      box-shadow: 0 0 80px rgba(130,90,255,.45);
+    }
+
+    .orb2 {
+      width: 150px;
+      height: 150px;
+      right: 35px;
+      bottom: 40px;
+      background: radial-gradient(circle at 30% 30%, #ffc4ee, #ff48c8 60%, transparent 72%);
+      box-shadow: 0 0 80px rgba(255,60,200,.35);
+      animation-delay: -2s;
+    }
+
+    .orb3 {
+      width: 95px;
+      height: 95px;
+      right: 80px;
+      top: 70px;
+      background: radial-gradient(circle, #9ff6ff, #28cde5, transparent 70%);
+      box-shadow: 0 0 70px rgba(30,210,255,.35);
+      animation-delay: -3s;
+    }
+
+    .center-card {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      width: 230px;
+      padding: 30px;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 25px;
+      background: rgba(10,10,10,.7);
+      backdrop-filter: blur(25px);
+      box-shadow: 0 25px 70px rgba(0,0,0,.5);
+    }
+
+    .center-card .spark {
+      font-size: 35px;
+      color: var(--purple);
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .center-card h3 {
+      font-family: "Space Grotesk";
+      font-size: 26px;
+    }
+
+    .center-card p {
+      color: #888;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .floating-card {
+      position: absolute;
+      z-index: 10;
+      padding: 14px 18px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(15,15,15,.75);
+      backdrop-filter: blur(15px);
+      box-shadow: 0 15px 40px rgba(0,0,0,.35);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .floating-card.one {
+      top: 85px;
+      left: 0;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .floating-card.two {
+      bottom: 70px;
+      right: 0;
+      animation: float 4s ease-in-out infinite -2s;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    /* SECTIONS */
+
+    .section {
+      padding: 120px 7%;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin-bottom: 60px;
+    }
+
+    .section-heading h2 {
+      font-family: "Space Grotesk";
+      font-size: clamp(38px, 5vw, 65px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 span {
+      color: #777;
+    }
+
+    .section-heading > p:last-child {
+      color: #888;
+      line-height: 1.7;
+    }
+
+    /* SERVICES */
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      min-height: 280px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 25px;
+      background: linear-gradient(
+        145deg,
+        rgba(255,255,255,.07),
+        rgba(255,255,255,.025)
+      );
+      transition: .4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(150,100,255,.08);
+      filter: blur(30px);
+      right: -90px;
+      bottom: -90px;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,255,255,.28);
+      background: rgba(255,255,255,.08);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 15px;
+      background: rgba(255,255,255,.07);
+      font-size: 23px;
+      margin-bottom: 28px;
+    }
+
+    .service-card h3 {
+      font-family: "Space Grotesk";
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: #888;
+      line-height: 1.6;
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .service-link {
+      color: white;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* SUCCESS */
+
+    .success-band {
+      padding: 120px 7%;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(120,80,255,.12), transparent 35%),
+        #080808;
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      padding: 35px 25px;
+      border: 1px solid rgba(255,255,255,.09);
+      border-radius: 22px;
+      background: rgba(255,255,255,.025);
+      transition: .3s;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+      background: rgba(255,255,255,.06);
+    }
+
+    .feature strong {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .feature h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* CTA */
+
+    .cta {
+      margin: 100px 7%;
+      padding: 70px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 35px;
+      background:
+        radial-gradient(circle at 80% 50%, rgba(160,90,255,.18), transparent 35%),
+        linear-gradient(120deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      font-family: "Space Grotesk";
+      font-size: clamp(35px, 5vw, 60px);
+      line-height: 1;
+      letter-spacing: -3px;
+      max-width: 800px;
+    }
+
+    .cta h2 span {
+      color: var(--purple);
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 35px 7%;
+      border-top: 1px solid rgba(255,255,255,.08);
+      color: #666;
+      font-size: 13px;
+      text-align: center;
+    }
+
+    /* REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 900px) {
+
+      .site-header {
+        padding: 0 5%;
+      }
+
+      nav,
+      .header-btn {
+        display: none;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 80px 6%;
+        text-align: center;
+      }
+
+      .hero-copy {
+        margin: auto;
+      }
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-actions {
+        justify-content: center;
+      }
+
+      .mini-stats {
+        justify-content: center;
+        gap: 25px;
+      }
+
+      .hero-visual {
+        min-height: 450px;
+      }
+
+      .abstract-box {
+        width: 330px;
+        height: 330px;
+      }
+
+      .service-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .feature-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 45px 30px;
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .hero {
+        padding-top: 65px;
+      }
+
+      .hero h1 {
+        font-size: 58px;
+        letter-spacing: -4px;
+      }
+
+      .hero h1 em {
+        font-size: 25px;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .mini-stats {
+        gap: 18px;
+      }
+
+      .mini-stats b {
+        font-size: 20px;
+      }
+
+      .hero-visual {
+        min-height: 370px;
+      }
+
+      .abstract-box {
+        width: 280px;
+        height: 280px;
+      }
+
+      .center-card {
+        width: 185px;
+        padding: 22px;
+      }
+
+      .center-card h3 {
+        font-size: 21px;
+      }
+
+      .floating-card {
+        padding: 10px 13px;
+        font-size: 11px;
+      }
+
+      .floating-card.one {
+        left: -5px;
+        top: 60px;
+      }
+
+      .floating-card.two {
+        right: -5px;
+        bottom: 50px;
+      }
+
+      .section,
+      .success-band {
+        padding: 80px 6%;
+      }
+
+      .service-grid,
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading h2 {
+        font-size: 42px;
+      }
+
+      .cta {
+        margin: 70px 6%;
+      }
+    }
+  </style>
 </head>
 
-
 <body>
-
-
-<!-- =========================
-     HEADER
-========================= -->
 
 <header class="site-header">
 
@@ -43,43 +766,18 @@
     <i>✦</i>
   </a>
 
-
-  <button
-    class="menu"
-    aria-label="Open menu"
-  >
+  <button class="menu" id="menuBtn" aria-label="Open menu">
     ☰
   </button>
 
-
-  <nav>
-
-    <a class="active" href="index.html">
-      Home
-    </a>
-
-    <a href="about.html">
-      About
-    </a>
-
-    <a href="#services">
-      Services
-    </a>
-
-    <a href="skills.html">
-      Skills
-    </a>
-
-    <a href="portfolio.html">
-      Portfolio
-    </a>
-
-    <a href="contact.html">
-      Contact
-    </a>
-
+  <nav id="navigation">
+    <a class="active" href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="#services">Services</a>
+    <a href="skills.html">Skills</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="contact.html">Contact</a>
   </nav>
-
 
   <a class="header-btn" href="contact.html">
     ✉ Let's Work Together
@@ -87,536 +785,286 @@
 
 </header>
 
-
-
 <main>
-
-
-<!-- =========================
-     HERO SECTION
-========================= -->
 
 <section class="hero">
 
-
   <div class="hero-copy reveal">
 
-
-    <p class="eyebrow">
-      WELCOME TO
-    </p>
-
+    <p class="eyebrow">WELCOME TO</p>
 
     <h1>
-
       <span>Aaru</span>
-
       <br>
-
       <strong>Digi Spark</strong>
-
       <em>✦</em>
-
     </h1>
-
 
     <h2>
       Your Growth <b>|</b> My Digital Passion
     </h2>
 
-
     <p class="lead">
-
       I help ideas shine online with creative content,
       smart digital marketing and a growth-focused mindset.
-
     </p>
-
 
     <div class="hero-actions">
 
-
-      <a
-        class="btn primary"
-        href="portfolio.html"
-      >
+      <a class="btn primary" href="portfolio.html">
         Explore My Work →
       </a>
 
-
-      <a
-        class="btn ghost"
-        href="#services"
-      >
+      <a class="btn ghost" href="#services">
         What I Do
       </a>
 
-
     </div>
-
 
     <div class="mini-stats">
 
-
       <div>
-
         <b>6+</b>
-
-        <span>
-          Core Services
-        </span>
-
+        <span>Core Services</span>
       </div>
 
-
       <div>
-
         <b>100%</b>
-
-        <span>
-          Creative Focus
-        </span>
-
+        <span>Creative Focus</span>
       </div>
-
 
       <div>
-
         <b>∞</b>
-
-        <span>
-          Ideas
-        </span>
-
+        <span>Ideas</span>
       </div>
-
 
     </div>
-
 
   </div>
 
 
-
-  <!-- =========================
-       HERO IMAGE
-  ========================= -->
+  <!-- PHOTO REMOVED — ABSTRACT VISUAL INSTEAD -->
 
   <div class="hero-visual reveal">
 
+    <div class="abstract-box">
 
-    <div class="glow g1"></div>
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
 
-    <div class="glow g2"></div>
-
-
-    <img
-      src="images/hero.png"
-      alt="Aaru Digi Spark digital marketing workspace"
-    >
-
-
-    <div class="floating-card card-one">
-
-      📈
-
-      <b>
-        Growth
-      </b>
-
-      <small>
-        Better strategy
-      </small>
+      <div class="center-card">
+        <span class="spark">✦</span>
+        <h3>Aaru Digi Spark</h3>
+        <p>Digital Growth Studio</p>
+      </div>
 
     </div>
 
+    <div class="floating-card one">
+      🚀
+      <b>Growth</b>
+    </div>
 
-    <div class="floating-card card-two">
-
+    <div class="floating-card two">
       ✨
-
-      <b>
-        Creative
-      </b>
-
-      <small>
-        Fresh ideas
-      </small>
-
+      <b>Creative Ideas</b>
     </div>
-
 
   </div>
-
 
 </section>
 
 
+<!-- SERVICES -->
 
-<!-- =========================
-     SERVICES SECTION
-========================= -->
-
-<section
-  id="services"
-  class="section services-preview"
->
-
+<section id="services" class="section services-preview">
 
   <div class="section-heading reveal">
 
-
-    <p class="eyebrow">
-      MY SERVICES
-    </p>
-
+    <p class="eyebrow">MY SERVICES</p>
 
     <h2>
       What I Can Do <span>For You</span>
     </h2>
-
 
     <p>
       Creative and practical digital solutions
       designed to help your brand stand out.
     </p>
 
-
   </div>
-
 
 
   <div class="service-grid">
 
+    <a href="social-media.html" class="service-card reveal">
 
-    <!-- =========================
-         SERVICE 01
-    ========================= -->
+      <div class="icon">📣</div>
 
-    <a
-      href="social-media.html"
-      class="service-card reveal"
-    >
-
-      <div class="icon purple">
-        📣
-      </div>
-
-
-      <h3>
-        Social Media
-      </h3>
-
+      <h3>Social Media</h3>
 
       <p>
         Grow your audience and build stronger
         online engagement.
       </p>
 
-
       <span class="service-link">
         Explore Service →
       </span>
 
-
     </a>
 
 
+    <a href="content-creation.html" class="service-card reveal">
 
-    <!-- =========================
-         SERVICE 02
-    ========================= -->
+      <div class="icon">✍️</div>
 
-    <a
-      href="content-creation.html"
-      class="service-card reveal"
-    >
-
-      <div class="icon pink">
-        ✍️
-      </div>
-
-
-      <h3>
-        Content Creation
-      </h3>
-
+      <h3>Content Creation</h3>
 
       <p>
         Posts, reels, graphics and ideas people
         want to notice.
       </p>
 
-
       <span class="service-link">
         Explore Service →
       </span>
 
-
     </a>
 
 
+    <a href="seo.html" class="service-card reveal">
 
-    <!-- =========================
-         SERVICE 03
-    ========================= -->
+      <div class="icon">🔎</div>
 
-    <a
-      href="seo.html"
-      class="service-card reveal"
-    >
-
-      <div class="icon blue">
-        🔎
-      </div>
-
-
-      <h3>
-        SEO Basics
-      </h3>
-
+      <h3>SEO</h3>
 
       <p>
         Improve visibility and help the right
-        audience find you.
+        audience find your brand.
       </p>
-
 
       <span class="service-link">
         Explore Service →
       </span>
 
-
     </a>
 
 
+    <a href="branding.html" class="service-card reveal">
 
-    <!-- =========================
-         SERVICE 04
-    ========================= -->
+      <div class="icon">🎨</div>
 
-    <a
-      href="branding.html"
-      class="service-card reveal"
-    >
-
-      <div class="icon green">
-        🎨
-      </div>
-
-
-      <h3>
-        Branding
-      </h3>
-
+      <h3>Branding</h3>
 
       <p>
         Build a memorable visual identity
         with purpose.
       </p>
 
-
       <span class="service-link">
         Explore Service →
       </span>
 
-
     </a>
 
 
+    <!-- ANALYTICS REMOVED -->
 
-    <!-- =========================
-         SERVICE 05
-    ========================= -->
+    <a href="web-design.html" class="service-card reveal">
 
-    <a
-      href="analytics.html"
-      class="service-card reveal"
-    >
+      <div class="icon">💻</div>
 
-      <div class="icon orange">
-        📊
-      </div>
-
-
-      <h3>
-        Analytics
-      </h3>
-
+      <h3>Web Design</h3>
 
       <p>
-        Use simple insights to make smarter
-        marketing decisions.
+        Modern, responsive websites designed
+        to make your brand stand out online.
       </p>
-
 
       <span class="service-link">
         Explore Service →
       </span>
 
-
     </a>
 
 
+    <a href="consultation.html" class="service-card reveal">
 
-    <!-- =========================
-         SERVICE 06
-    ========================= -->
+      <div class="icon">💬</div>
 
-    <a
-      href="consultation.html"
-      class="service-card reveal"
-    >
-
-      <div class="icon cyan">
-        💬
-      </div>
-
-
-      <h3>
-        Consultation
-      </h3>
-
+      <h3>Consultation</h3>
 
       <p>
         Ideas, direction and practical support
         for digital growth.
       </p>
 
-
       <span class="service-link">
         Explore Service →
       </span>
 
-
     </a>
 
-
   </div>
-
 
 </section>
 
 
-
-<!-- =========================
-     WHY CHOOSE ME
-========================= -->
+<!-- WHY CHOOSE ME -->
 
 <section class="success-band">
 
-
   <div class="section-heading reveal">
 
-
-    <p class="eyebrow">
-      WHY CHOOSE ME
-    </p>
-
+    <p class="eyebrow">WHY CHOOSE ME</p>
 
     <h2>
       Your Success Is <span>My Priority</span>
     </h2>
 
-
   </div>
-
 
 
   <div class="feature-grid">
 
-
     <div class="feature reveal">
-
-      <strong>
-        ⚡
-      </strong>
-
-      <h3>
-        Creative Mindset
-      </h3>
-
-      <p>
-        Fresh ideas for real impact.
-      </p>
-
+      <strong>⚡</strong>
+      <h3>Creative Mindset</h3>
+      <p>Fresh ideas for real impact.</p>
     </div>
 
-
-
     <div class="feature reveal">
-
-      <strong>
-        🎯
-      </strong>
-
-      <h3>
-        Goal Focused
-      </h3>
-
-      <p>
-        Your goals, my commitment.
-      </p>
-
+      <strong>🎯</strong>
+      <h3>Goal Focused</h3>
+      <p>Your goals, my commitment.</p>
     </div>
 
-
-
     <div class="feature reveal">
-
-      <strong>
-        💜
-      </strong>
-
-      <h3>
-        100% Dedication
-      </h3>
-
-      <p>
-        Care in every detail.
-      </p>
-
+      <strong>💜</strong>
+      <h3>100% Dedication</h3>
+      <p>Care in every detail.</p>
     </div>
 
-
-
     <div class="feature reveal">
-
-      <strong>
-        🤝
-      </strong>
-
-      <h3>
-        Friendly Support
-      </h3>
-
-      <p>
-        Always here to help.
-      </p>
-
+      <strong>🤝</strong>
+      <h3>Friendly Support</h3>
+      <p>Always here to help.</p>
     </div>
-
 
   </div>
-
 
 </section>
 
 
-
-<!-- =========================
-     FINAL CTA
-========================= -->
+<!-- CTA -->
 
 <section class="cta reveal">
 
-
   <div>
 
-    <p class="eyebrow">
-      READY?
-    </p>
-
+    <p class="eyebrow">READY?</p>
 
     <h2>
       Let's turn your ideas into
@@ -625,41 +1073,101 @@
 
   </div>
 
-
-  <a
-    class="btn primary"
-    href="contact.html"
-  >
+  <a class="btn primary" href="contact.html">
     Let's Talk →
   </a>
 
-
 </section>
-
 
 </main>
 
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
-
   © 2026 Aaru Digi Spark · Built with HTML, CSS & JavaScript
-
 </footer>
 
 
+<script>
+  /* MOBILE MENU */
 
-<!-- =========================
-     JAVASCRIPT
-========================= -->
+  const menuBtn = document.getElementById("menuBtn");
+  const navigation = document.getElementById("navigation");
 
-<script src="script.js"></script>
+  menuBtn.addEventListener("click", () => {
+    if (navigation.style.display === "flex") {
+      navigation.style.display = "";
+    } else {
+      navigation.style.display = "flex";
+      navigation.style.position = "absolute";
+      navigation.style.top = "78px";
+      navigation.style.left = "0";
+      navigation.style.right = "0";
+      navigation.style.padding = "25px";
+      navigation.style.flexDirection = "column";
+      navigation.style.background = "rgba(5,5,5,.96)";
+      navigation.style.backdropFilter = "blur(20px)";
+      navigation.style.borderBottom = "1px solid rgba(255,255,255,.1)";
+    }
+  });
 
+
+  /* SCROLL REVEAL */
+
+  const revealElements = document.querySelectorAll(".reveal");
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+
+      });
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+  revealElements.forEach((element) => {
+    revealObserver.observe(element);
+  });
+
+
+  /* CLOSE MOBILE MENU AFTER CLICK */
+
+  document.querySelectorAll("nav a").forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+      if (window.innerWidth <= 900) {
+        navigation.style.display = "";
+      }
+
+    });
+
+  });
+
+
+  /* SIMPLE PARALLAX */
+
+  window.addEventListener("scroll", () => {
+
+    const visual = document.querySelector(".hero-visual");
+
+    if (!visual) return;
+
+    const scroll = window.scrollY;
+
+    if (scroll < 700) {
+      visual.style.transform =
+        "translateY(" + scroll * 0.04 + "px)";
+    }
+
+  });
+</script>
 
 </body>
-
 </html>
+```
