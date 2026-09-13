@@ -3,18 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Aaru Digi Spark — creative digital marketing, content, branding, SEO and growth.">
+<meta name="description" content="Aaru Digi Spark — bespoke digital marketing, content, branding, SEO and growth.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <title>Aaru Digi Spark | Digital Marketing</title>
 </head>
 <body>
 <canvas id="starfield"></canvas>
-<header>
+<header id="main-header">
   <nav class="navbar">
-    <a href="index.html" class="brand">Aaru <span class="accent">Digi Spark</span></a>
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="Aaru Digi Spark">
+      <span class="brand-word">Aaru <span class="accent">Digi Spark</span></span>
+    </a>
     <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
     <div id="nav-links">
       <ul>
@@ -32,64 +35,46 @@
 
 <main>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <div class="tag-pill">
-        <span class="liquid-glass"><span class="badge">New</span><span class="label">2026 rebrand is live</span></span>
+  <!-- SCROLL-SCRUBBED HERO -->
+  <section class="hero-runway" id="hero-runway">
+    <div class="hero-sticky-frame">
+      <div class="hero-video-fallback"></div>
+      <video id="hero-scrub-video" muted playsinline preload="auto" poster="images/logo.jpg">
+        <source src="videos/hero-bg.mp4" type="video/mp4">
+      </video>
+
+      <div class="hero-content-stage">
+        <span class="eyebrow" id="stage-eyebrow">BESPOKE DIGITAL STRATEGY</span>
+        <h1 id="stage-title">Trusted Direction</h1>
+        <p id="stage-desc">Clear, deliberate marketing for brands who'd rather grow steadily than chase every trend.</p>
+        <div class="hero-actions">
+          <a href="portfolio.html" class="btn btn-primary" id="stage-btn-primary">Explore The Work →</a>
+          <a href="about.html" class="btn btn-ghost" id="stage-btn-secondary">Our Story</a>
+        </div>
       </div>
 
-      <h1 class="sr-only">Aaru Digi Spark — Your growth, one clear spark</h1>
-      <div class="logo-stage">
-        <div class="logo-glow"></div>
-        <img class="logo-mark" src="images/logo.jpg" alt="Aaru Digi Spark logo">
+      <div class="hero-hud-left">Kathmandu, Nepal</div>
+      <div class="hero-hud-right">
+        <span class="stage-num active" data-stage="0">01</span>
+        <span class="stage-num" data-stage="1">02</span>
+        <span class="stage-num" data-stage="2">03</span>
+        <div class="stage-progress"><div class="stage-progress-bar" id="stage-progress-bar"></div></div>
       </div>
-
-      <p class="lede">Aaru Digi Spark helps small brands track content, plan growth,<br>and show up online with precision.</p>
-      <div class="hero-actions">
-        <a href="contact.html" class="btn btn-primary">Start a Project for Free</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="parallax-layer">
-        <video class="hero-video" autoplay muted loop playsinline poster="images/logo.jpg">
-          <source src="videos/hero-bg.mp4" type="video/mp4">
-        </video>
-        <svg class="hero-chart" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <defs>
-            <linearGradient id="lineGrad" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15"/>
-              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.9"/>
-            </linearGradient>
-          </defs>
-          <polyline points="20,420 120,380 220,400 320,300 420,330 520,220 620,250 720,140 820,170" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <g fill="#fff">
-            <circle cx="20" cy="420" r="4"/>
-            <circle cx="220" cy="400" r="4"/>
-            <circle cx="420" cy="330" r="4"/>
-            <circle cx="620" cy="250" r="4"/>
-            <circle cx="820" cy="170" r="5"/>
-          </g>
-          <text x="820" y="150" fill="#fff" font-family="Inter, sans-serif" font-size="20" font-weight="600" text-anchor="end">+128%</text>
-          <text x="820" y="195" fill="#c9c9c9" font-family="Inter, sans-serif" font-size="12" text-anchor="end">reach, 90 days</text>
-        </svg>
-      </div>
-      <div class="fade-bottom"></div>
-    </div>
-
-    <div class="stat-row">
-      <div class="stat"><span class="num" data-count="6">0</span><span class="label">Core services</span></div>
-      <div class="stat"><span class="num" data-count="100%">0%</span><span class="label">Creative focus</span></div>
-      <div class="stat"><span class="num accent">∞</span><span class="label">Ideas on tap</span></div>
     </div>
   </section>
+
+  <div class="stat-row">
+    <div class="stat"><span class="num" data-count="6">0</span><span class="label">Core Services</span></div>
+    <div class="stat"><span class="num" data-count="100%">0%</span><span class="label">Creative Focus</span></div>
+    <div class="stat"><span class="num accent">∞</span><span class="label">Ideas on Tap</span></div>
+  </div>
 
   <!-- SERVICES -->
   <section class="block">
     <div class="wrap">
       <div class="block-head">
-        <h2>What I can do <span class="accent">for you</span></h2>
+        <span class="eyebrow-mark">Our Craft</span>
+        <h2>What I Can Do <span class="accent">For You</span></h2>
         <p>Six focused services, picked because they compound — content feeds SEO, SEO feeds growth, growth feeds brand.</p>
       </div>
       <div class="service-grid">
@@ -131,7 +116,8 @@
   <section class="block section-alt">
     <div class="wrap">
       <div class="block-head">
-        <h2>How a project <span class="accent">runs</span></h2>
+        <span class="eyebrow-mark">Our Process</span>
+        <h2>How a Project <span class="accent">Runs</span></h2>
         <p>Four stages, always in this order.</p>
       </div>
       <div class="timeline">
@@ -147,8 +133,9 @@
   <section class="block">
     <div class="wrap">
       <div class="block-head">
-        <h2>Where the <span class="accent">strength</span> is</h2>
-        <p>See the full breakdown on the <a href="skills.html" style="color:var(--fg);text-decoration:underline">Skills page</a>.</p>
+        <span class="eyebrow-mark">Expertise</span>
+        <h2>Where the <span class="accent">Strength</span> Is</h2>
+        <p>See the full breakdown on the <a href="skills.html" style="color:var(--gold);text-decoration:underline">Skills page</a>.</p>
       </div>
       <div class="skills-list">
         <div class="skill-row"><div class="skill-top"><span>Digital Marketing</span><span>80%</span></div><div class="skill-track"><div class="skill-fill" data-level="80"></div></div></div>
@@ -162,8 +149,9 @@
   <section class="block section-alt">
     <div class="wrap">
       <div class="block-head">
-        <h2>Recent <span class="accent">work</span></h2>
-        <p>The full case-by-case breakdown lives on the <a href="portfolio.html" style="color:var(--fg);text-decoration:underline">Portfolio page</a>.</p>
+        <span class="eyebrow-mark">Selected Work</span>
+        <h2>Recent <span class="accent">Work</span></h2>
+        <p>The full case-by-case breakdown lives on the <a href="portfolio.html" style="color:var(--gold-dark);text-decoration:underline">Portfolio page</a>.</p>
       </div>
       <div class="portfolio-grid">
         <div class="p-card"><span class="tag">Branding</span><h3>Local café identity refresh</h3><p>New logo, signage, and social templates that finally matched the food.</p></div>
@@ -177,8 +165,8 @@
   <section class="quote-section">
     <div class="wrap quote-inner">
       <svg class="quote-mark" viewBox="0 0 44 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0 32V19.5C0 8.5 6 1.5 16 0L17.5 4.5C11 6 8 10 8 16H16V32H0Z" fill="#333"/>
-        <path d="M26 32V19.5C26 8.5 32 1.5 42 0L43.5 4.5C37 6 34 10 34 16H42V32H26Z" fill="#333"/>
+        <path d="M0 32V19.5C0 8.5 6 1.5 16 0L17.5 4.5C11 6 8 10 8 16H16V32H0Z" fill="#c59b5f"/>
+        <path d="M26 32V19.5C26 8.5 32 1.5 42 0L43.5 4.5C37 6 34 10 34 16H42V32H26Z" fill="#c59b5f"/>
       </svg>
       <p class="quote-text">
         <span class="word">Good</span><span class="word">marketing</span><span class="word">doesn't</span><span class="word">shout</span><span class="word">louder</span><span class="word">—</span><span class="word">it</span><span class="word">just</span><span class="word">gets</span><span class="word">out</span><span class="word">of</span><span class="word">the</span><span class="word">way</span><span class="word">of</span><span class="word">a</span><span class="word">good</span><span class="word">idea.</span><span class="closing-quote">"</span>
@@ -197,8 +185,8 @@
   <section class="block tight">
     <div class="wrap">
       <div class="cta-banner">
-        <h2>Let's turn your ideas into <span class="accent">real results</span>.</h2>
-        <a href="contact.html" class="btn btn-primary">Let's talk →</a>
+        <h2>Let's Turn Your Ideas Into <span class="accent">Real Results</span></h2>
+        <a href="contact.html" class="btn btn-primary">Let's Talk →</a>
       </div>
     </div>
   </section>

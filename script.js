@@ -3,6 +3,14 @@
 document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Header scrolled state
+  const header = document.getElementById('main-header');
+  if (header) {
+    const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 60);
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
+  }
+
   // Highlight current page in the nav
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('#nav-links a').forEach(link => {
@@ -152,29 +160,89 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  const heroVideo = document.querySelector('.hero-video');
-  if (heroVideo && reduceMotion) {
-    heroVideo.removeAttribute('autoplay');
-    heroVideo.pause();
+  // ---- Scroll-scrubbed hero (video currentTime driven by scroll progress) ----
+  const runway = document.getElementById('hero-runway');
+  const video = document.getElementById('hero-scrub-video');
+  if (runway) {
+    const STAGES = [
+      {
+        eyebrow: 'BESPOKE DIGITAL STRATEGY',
+        title: 'Trusted Direction',
+        desc: "Clear, deliberate marketing for brands who'd rather grow steadily than chase every trend.",
+        primary: ['Explore The Work →', 'portfolio.html'],
+        secondary: ['Our Story', 'about.html']
+      },
+      {
+        eyebrow: 'CREATIVE EXCELLENCE',
+        title: 'Content That Connects',
+        desc: 'Posts, reels, and copy shaped around what your audience actually stops scrolling for.',
+        primary: ['See Services →', 'services.html'],
+        secondary: ['Ask a Question', 'contact.html']
+      },
+      {
+        eyebrow: 'THE PATH TO GROWTH',
+        title: 'Endless Momentum',
+        desc: 'Weekly checks and fast adjustments — marketing that compounds instead of resetting every month.',
+        primary: ['Start a Project →', 'contact.html'],
+        secondary: ['View Skills', 'skills.html']
+      }
+    ];
+
+    const eyebrowEl = document.getElementById('stage-eyebrow');
+    const titleEl = document.getElementById('stage-title');
+    const descEl = document.getElementById('stage-desc');
+    const primaryEl = document.getElementById('stage-btn-primary');
+    const secondaryEl = document.getElementById('stage-btn-secondary');
+    const progressBar = document.getElementById('stage-progress-bar');
+    const stageNums = document.querySelectorAll('.stage-num');
+
+    let currentStage = -1;
+    let videoDuration = 0;
+    if (video) {
+      video.addEventListener('loadedmetadata', () => { videoDuration = video.duration || 0; });
+      video.play().catch(() => {}); // some browsers need an explicit play() call even when muted+autoplay-less
+      video.pause();
+    }
+
+    const applyStage = (i) => {
+      if (i === currentStage) return;
+      currentStage = i;
+      const s = STAGES[i];
+      if (eyebrowEl) eyebrowEl.textContent = s.eyebrow;
+      if (titleEl) titleEl.textContent = s.title;
+      if (descEl) descEl.textContent = s.desc;
+      if (primaryEl) { primaryEl.textContent = s.primary[0]; primaryEl.setAttribute('href', s.primary[1]); }
+      if (secondaryEl) { secondaryEl.textContent = s.secondary[0]; secondaryEl.setAttribute('href', s.secondary[1]); }
+      stageNums.forEach(el => el.classList.toggle('active', Number(el.dataset.stage) === i));
+    };
+
+    const updateRunway = () => {
+      const rect = runway.getBoundingClientRect();
+      const scrollableHeight = rect.height - window.innerHeight;
+      const progress = Math.min(Math.max(-rect.top / (scrollableHeight || 1), 0), 1);
+
+      if (video && videoDuration) {
+        video.currentTime = progress * videoDuration;
+      }
+
+      const stageIndex = Math.min(Math.floor(progress * 3), 2);
+      applyStage(stageIndex);
+
+      const localProgress = (progress * 3) - stageIndex;
+      if (progressBar) progressBar.style.width = `${15 + localProgress * 85}%`;
+    };
+
+    applyStage(0);
+    window.addEventListener('scroll', () => requestAnimationFrame(updateRunway), { passive: true });
+    updateRunway();
+  }
+
+  if (video && reduceMotion) {
+    video.removeAttribute('autoplay');
+    video.pause();
   }
 
   if (reduceMotion) return;
-
-  // Hero visual parallax on scroll (mirrors the Framer Motion useScroll transform)
-  const heroVisual = document.querySelector('.hero-visual');
-  const parallaxLayer = heroVisual ? heroVisual.querySelector('.parallax-layer') : null;
-  if (heroVisual && parallaxLayer) {
-    const updateParallax = () => {
-      const rect = heroVisual.getBoundingClientRect();
-      const vh = window.innerHeight;
-      // progress: 0 when top of section at top of viewport, 1 when scrolled a full section height past
-      const progress = Math.min(Math.max((0 - rect.top) / (rect.height || vh), 0), 1);
-      const translateY = progress * -80; // px of parallax drift
-      parallaxLayer.style.transform = `translateY(${translateY}px)`;
-    };
-    window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), { passive: true });
-    updateParallax();
-  }
 
   // Scroll-driven word reveal for the quote section
   const quoteWords = document.querySelectorAll('.quote-text .word');
