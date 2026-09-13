@@ -225,6 +225,52 @@ nav.navbar {
 }
 .hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 48px; }
 
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+
+/* Logo hero mark: glow pulse behind, gentle float, fade-scale entrance */
+.logo-stage {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto 28px;
+}
+.logo-glow {
+  position: absolute;
+  inset: -20% -10%;
+  background:
+    radial-gradient(circle at 25% 40%, rgba(76,140,255,0.35), transparent 55%),
+    radial-gradient(circle at 75% 55%, rgba(255,60,140,0.32), transparent 55%);
+  filter: blur(40px);
+  z-index: 0;
+  animation: glowPulse 5s ease-in-out infinite;
+}
+.logo-mark {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-radius: 12px;
+  animation: logoFloat 6s ease-in-out infinite, logoEnter 1s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+@keyframes logoEnter {
+  from { opacity: 0; transform: scale(0.92) translateY(16px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-mark, .logo-glow { animation: none; }
+}
+
 /* Full-bleed visual panel */
 .hero-visual {
   position: relative;
