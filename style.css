@@ -480,8 +480,46 @@ footer .foot-links a { color: var(--muted); text-decoration: none; font-size: 0.
 footer .foot-links a:hover { color: var(--fg); }
 
 /* ============================================
-   Responsive
+   Starfield background
    ============================================ */
+#starfield {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
+body > header, body > main, body > footer { position: relative; z-index: 1; }
+
+/* ============================================
+   Illustrated inner-page hero
+   ============================================ */
+.page-hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 40px;
+  align-items: center;
+}
+.page-hero-art {
+  position: relative;
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, rgba(255,255,255,0.10), transparent 70%);
+  border: 1px solid var(--border-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page-hero-art svg { width: 62%; height: 62%; }
+@media (max-width: 760px) {
+  .page-hero-grid { grid-template-columns: 1fr; }
+  .page-hero-art { order: -1; max-width: 160px; }
+}
+
 @media (max-width: 860px) {
   .service-grid { grid-template-columns: repeat(2, 1fr); }
   .timeline { grid-template-columns: repeat(2, 1fr); }

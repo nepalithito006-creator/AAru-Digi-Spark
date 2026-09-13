@@ -62,6 +62,96 @@ document.addEventListener('DOMContentLoaded', () => {
     skillBars.forEach(bar => skillObserver.observe(bar));
   }
 
+  // ---- Starfield atmosphere ----
+  const canvas = document.getElementById('starfield');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let w, h, stars, bursts = [];
+    const STAR_COUNT_DENSITY = 0.00012; // stars per px^2
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+      const count = Math.round(w * h * STAR_COUNT_DENSITY);
+      stars = Array.from({ length: count }, () => ({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.3 + 0.3,
+        baseAlpha: Math.random() * 0.5 + 0.3,
+        twinkleSpeed: Math.random() * 0.02 + 0.005,
+        phase: Math.random() * Math.PI * 2,
+        parallax: Math.random() * 0.15 + 0.03
+      }));
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let scrollY = window.scrollY;
+    window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
+
+    document.addEventListener('click', (e) => {
+      // don't spawn a burst on interactive elements' normal click flow being obstructed —
+      // canvas has pointer-events:none, so this listens globally and just adds visual flair
+      const count = 10;
+      for (let i = 0; i < count; i++) {
+        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.3;
+        const speed = Math.random() * 2.2 + 1;
+        bursts.push({
+          x: e.clientX,
+          y: e.clientY,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          life: 1,
+          r: Math.random() * 1.5 + 1
+        });
+      }
+    });
+
+    let t = 0;
+    function draw() {
+      t += 1;
+      ctx.clearRect(0, 0, w, h);
+
+      // twinkling stars, drifting slowly with scroll parallax
+      stars.forEach(s => {
+        const alpha = s.baseAlpha + Math.sin(t * s.twinkleSpeed + s.phase) * 0.25;
+        const y = (s.y + scrollY * s.parallax) % h;
+        ctx.beginPath();
+        ctx.arc(s.x, y < 0 ? y + h : y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${Math.max(alpha, 0.05)})`;
+        ctx.fill();
+      });
+
+      // click bursts
+      bursts.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+        b.life -= 0.02;
+        if (b.life > 0) {
+          ctx.beginPath();
+          ctx.arc(b.x, b.y, b.r * b.life, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${b.life})`;
+          ctx.fill();
+        }
+      });
+      bursts = bursts.filter(b => b.life > 0);
+
+      requestAnimationFrame(draw);
+    }
+
+    if (!reduceMotion) {
+      draw();
+    } else {
+      // static, non-animated starfield for reduced-motion users
+      stars.forEach(s => {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${s.baseAlpha})`;
+        ctx.fill();
+      });
+    }
+  }
+
   const heroVideo = document.querySelector('.hero-video');
   if (heroVideo && reduceMotion) {
     heroVideo.removeAttribute('autoplay');
