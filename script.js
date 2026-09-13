@@ -70,12 +70,17 @@ document.addEventListener('DOMContentLoaded', () => {
     skillBars.forEach(bar => skillObserver.observe(bar));
   }
 
-  // ---- Starfield atmosphere ----
+  // ---- Starfield atmosphere: stars, shooting stars, drifting planets ----
   const canvas = document.getElementById('starfield');
   if (canvas) {
     const ctx = canvas.getContext('2d');
-    let w, h, stars, bursts = [];
-    const STAR_COUNT_DENSITY = 0.00012; // stars per px^2
+    let w, h, stars, bursts = [], shootingStars = [];
+    const STAR_COUNT_DENSITY = 0.00012;
+
+    const PLANETS = [
+      { name: 'earth', baseXPct: 0.86, baseYPct: 0.16, r: 68, parallax: 0.06, colors: ['#5fa8e0', '#1c3f66', '#081420'] },
+      { name: 'mars',  baseXPct: 0.10, baseYPct: 0.78, r: 46, parallax: 0.1,  colors: ['#e0783f', '#8a3417', '#2a0f06'] }
+    ];
 
     function resize() {
       w = canvas.width = window.innerWidth;
@@ -98,29 +103,54 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', () => { scrollY = window.scrollY; }, { passive: true });
 
     document.addEventListener('click', (e) => {
-      // don't spawn a burst on interactive elements' normal click flow being obstructed —
-      // canvas has pointer-events:none, so this listens globally and just adds visual flair
       const count = 10;
       for (let i = 0; i < count; i++) {
         const angle = (Math.PI * 2 * i) / count + Math.random() * 0.3;
         const speed = Math.random() * 2.2 + 1;
-        bursts.push({
-          x: e.clientX,
-          y: e.clientY,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          life: 1,
-          r: Math.random() * 1.5 + 1
-        });
+        bursts.push({ x: e.clientX, y: e.clientY, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, life: 1, r: Math.random() * 1.5 + 1 });
       }
     });
 
+    function spawnShootingStar() {
+      const fromTop = Math.random() < 0.6;
+      const startX = fromTop ? Math.random() * w : -20;
+      const startY = fromTop ? -20 : Math.random() * h * 0.5;
+      const speed = Math.random() * 6 + 8;
+      const angle = (Math.PI / 4) + (Math.random() * 0.3 - 0.15); // ~45deg down-right
+      shootingStars.push({
+        x: startX, y: startY,
+        vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+        life: 1, len: Math.random() * 60 + 60
+      });
+    }
+
+    function drawPlanet(p, t) {
+      const x = p.baseXPct * w + Math.sin(t * 0.0006 + p.r) * 14;
+      const y = p.baseYPct * h + scrollY * p.parallax + Math.cos(t * 0.0005 + p.r) * 10;
+      const grad = ctx.createRadialGradient(x - p.r * 0.35, y - p.r * 0.35, p.r * 0.1, x, y, p.r);
+      grad.addColorStop(0, p.colors[0]);
+      grad.addColorStop(0.55, p.colors[1]);
+      grad.addColorStop(1, p.colors[2]);
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(x, y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = grad;
+      ctx.shadowColor = p.colors[0];
+      ctx.shadowBlur = 30;
+      ctx.fill();
+      ctx.restore();
+      return { x, y };
+    }
+
     let t = 0;
     function draw() {
-      t += 1;
+      t += 16;
       ctx.clearRect(0, 0, w, h);
 
-      // twinkling stars, drifting slowly with scroll parallax
+      // planets (drawn first, furthest back)
+      PLANETS.forEach(p => drawPlanet(p, t));
+
+      // twinkling stars with scroll parallax
       stars.forEach(s => {
         const alpha = s.baseAlpha + Math.sin(t * s.twinkleSpeed + s.phase) * 0.25;
         const y = (s.y + scrollY * s.parallax) % h;
@@ -129,6 +159,27 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fillStyle = `rgba(255,255,255,${Math.max(alpha, 0.05)})`;
         ctx.fill();
       });
+
+      // occasionally spawn a shooting star
+      if (Math.random() < 0.01 && shootingStars.length < 3) spawnShootingStar();
+
+      shootingStars.forEach(s => {
+        s.x += s.vx;
+        s.y += s.vy;
+        s.life -= 0.012;
+        const tailX = s.x - Math.cos(Math.atan2(s.vy, s.vx)) * s.len;
+        const tailY = s.y - Math.sin(Math.atan2(s.vy, s.vx)) * s.len;
+        const grad = ctx.createLinearGradient(s.x, s.y, tailX, tailY);
+        grad.addColorStop(0, `rgba(255,255,255,${Math.max(s.life, 0)})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(tailX, tailY);
+        ctx.stroke();
+      });
+      shootingStars = shootingStars.filter(s => s.life > 0 && s.x < w + 100 && s.y < h + 100);
 
       // click bursts
       bursts.forEach(b => {
@@ -150,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!reduceMotion) {
       draw();
     } else {
-      // static, non-animated starfield for reduced-motion users
+      PLANETS.forEach(p => drawPlanet(p, 0));
       stars.forEach(s => {
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
@@ -158,88 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.fill();
       });
     }
-  }
-
-  // ---- Scroll-scrubbed hero (video currentTime driven by scroll progress) ----
-  const runway = document.getElementById('hero-runway');
-  const video = document.getElementById('hero-scrub-video');
-  if (runway) {
-    const STAGES = [
-      {
-        eyebrow: 'BESPOKE DIGITAL STRATEGY',
-        title: 'Trusted Direction',
-        desc: "Clear, deliberate marketing for brands who'd rather grow steadily than chase every trend.",
-        primary: ['Explore The Work →', 'portfolio.html'],
-        secondary: ['Our Story', 'about.html']
-      },
-      {
-        eyebrow: 'CREATIVE EXCELLENCE',
-        title: 'Content That Connects',
-        desc: 'Posts, reels, and copy shaped around what your audience actually stops scrolling for.',
-        primary: ['See Services →', 'services.html'],
-        secondary: ['Ask a Question', 'contact.html']
-      },
-      {
-        eyebrow: 'THE PATH TO GROWTH',
-        title: 'Endless Momentum',
-        desc: 'Weekly checks and fast adjustments — marketing that compounds instead of resetting every month.',
-        primary: ['Start a Project →', 'contact.html'],
-        secondary: ['View Skills', 'skills.html']
-      }
-    ];
-
-    const eyebrowEl = document.getElementById('stage-eyebrow');
-    const titleEl = document.getElementById('stage-title');
-    const descEl = document.getElementById('stage-desc');
-    const primaryEl = document.getElementById('stage-btn-primary');
-    const secondaryEl = document.getElementById('stage-btn-secondary');
-    const progressBar = document.getElementById('stage-progress-bar');
-    const stageNums = document.querySelectorAll('.stage-num');
-
-    let currentStage = -1;
-    let videoDuration = 0;
-    if (video) {
-      video.addEventListener('loadedmetadata', () => { videoDuration = video.duration || 0; });
-      video.play().catch(() => {}); // some browsers need an explicit play() call even when muted+autoplay-less
-      video.pause();
-    }
-
-    const applyStage = (i) => {
-      if (i === currentStage) return;
-      currentStage = i;
-      const s = STAGES[i];
-      if (eyebrowEl) eyebrowEl.textContent = s.eyebrow;
-      if (titleEl) titleEl.textContent = s.title;
-      if (descEl) descEl.textContent = s.desc;
-      if (primaryEl) { primaryEl.textContent = s.primary[0]; primaryEl.setAttribute('href', s.primary[1]); }
-      if (secondaryEl) { secondaryEl.textContent = s.secondary[0]; secondaryEl.setAttribute('href', s.secondary[1]); }
-      stageNums.forEach(el => el.classList.toggle('active', Number(el.dataset.stage) === i));
-    };
-
-    const updateRunway = () => {
-      const rect = runway.getBoundingClientRect();
-      const scrollableHeight = rect.height - window.innerHeight;
-      const progress = Math.min(Math.max(-rect.top / (scrollableHeight || 1), 0), 1);
-
-      if (video && videoDuration) {
-        video.currentTime = progress * videoDuration;
-      }
-
-      const stageIndex = Math.min(Math.floor(progress * 3), 2);
-      applyStage(stageIndex);
-
-      const localProgress = (progress * 3) - stageIndex;
-      if (progressBar) progressBar.style.width = `${15 + localProgress * 85}%`;
-    };
-
-    applyStage(0);
-    window.addEventListener('scroll', () => requestAnimationFrame(updateRunway), { passive: true });
-    updateRunway();
-  }
-
-  if (video && reduceMotion) {
-    video.removeAttribute('autoplay');
-    video.pause();
   }
 
   if (reduceMotion) return;
