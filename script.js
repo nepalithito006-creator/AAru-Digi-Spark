@@ -1,1 +1,22 @@
-document.addEventListener("DOMContentLoaded",()=>{const items=document.querySelectorAll(".reveal");const show=()=>items.forEach(el=>{if(el.getBoundingClientRect().top<innerHeight-50)el.classList.add("show")});show();addEventListener("scroll",show,{passive:true});const menu=document.querySelector(".menu"),nav=document.querySelector("nav");if(menu&&nav){menu.addEventListener("click",()=>nav.classList.toggle("open"));nav.querySelectorAll("a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")))}});
+// Aaru Digi Spark - site script
+
+// Highlight the current page in the nav
+document.addEventListener('DOMContentLoaded', () => {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('nav a').forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+
+  // Optional mobile menu toggle (works if you add a button with id="menu-toggle"
+  // and wrap the nav links in an element with id="nav-links")
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+  }
+});
