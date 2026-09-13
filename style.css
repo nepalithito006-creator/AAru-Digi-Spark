@@ -1,64 +1,74 @@
-body {
-    background-color: #121212;
-    color: white;
-    font-family: 'Arial', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Pacifico&display=swap');
 
-header {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#030b18;color:#f7f8ff;line-height:1.6;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 80% 10%,rgba(79,70,229,.12),transparent 28%),radial-gradient(circle at 15% 70%,rgba(0,191,255,.08),transparent 30%);z-index:-1}
+a{text-decoration:none;color:inherit}
+.site-header{height:74px;display:flex;align-items:center;justify-content:space-between;padding:0 7.5%;background:rgba(2,10,22,.96);border-bottom:1px solid #273448;position:sticky;top:0;z-index:20;backdrop-filter:blur(12px)}
+.logo{font-size:29px;font-weight:800;line-height:.85;position:relative}
+.logo span{display:block;font-size:38px;font-style:italic}
+.logo b{font-size:17px;color:#b77cff;margin-left:2px}
+.logo i{position:absolute;color:#ffd34e;font-style:normal;right:-16px;top:-12px}
+nav{display:flex;gap:36px;height:100%;align-items:center}
+nav a{font-size:15px;font-weight:600;position:relative;color:#fff}
+nav a:after{content:"";position:absolute;left:0;right:0;bottom:-25px;height:3px;background:linear-gradient(90deg,#a12cff,#00c6ff);transform:scaleX(0);transition:.25s}
+nav a:hover:after,nav a.active:after{transform:scaleX(1)}
+.header-btn,.btn{display:inline-flex;align-items:center;gap:12px;border-radius:30px;padding:12px 22px;font-weight:700;background:linear-gradient(90deg,#8d25f5,#08bfff);box-shadow:0 8px 28px rgba(90,61,255,.22)}
+.menu{display:none;background:none;border:0;color:white;font-size:25px}
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
+.hero{min-height:425px;display:grid;grid-template-columns:43% 57%;position:relative;overflow:hidden;background:linear-gradient(90deg,#061529 0%,#071a31 45%,#101c31 100%)}
+.hero-copy{padding:55px 0 55px 9.5%;position:relative;z-index:2}
+.eyebrow{letter-spacing:5px;color:#9e9aff;font-size:13px;font-weight:700;margin-bottom:3px}
+.hero h1{font-size:76px;line-height:.88;letter-spacing:-4px;font-style:italic}
+.hero h1 span{font-size:34px;color:#ffd34e;vertical-align:top;margin-left:8px}
+.hero h1 strong{font-size:43px;letter-spacing:-2px;font-style:normal}
+.hero h2{font-size:22px;margin:25px 0 8px}.hero h2 em{font-style:normal;color:#a977ff}
+.lead{max-width:510px;color:#d6dcea;font-size:15px;margin-bottom:24px}
+.hero-art{position:relative;min-height:425px;background:radial-gradient(circle at 48% 45%,#213552,#0b1729 56%,#07101d)}
+.glow{position:absolute;width:300px;height:300px;border-radius:50%;background:#5c44ff;filter:blur(85px);opacity:.25;left:25%;top:20%}
+.person-placeholder{position:absolute;bottom:0;left:17%;width:330px;height:400px}
+.head{position:absolute;width:185px;height:205px;border-radius:48% 48% 45% 45%;background:linear-gradient(145deg,#f5c5a9,#c98068);left:73px;top:52px;z-index:2}
+.hair{position:absolute;width:225px;height:280px;border-radius:50% 50% 35% 35%;background:#11131c;left:52px;top:25px;z-index:3;clip-path:polygon(0 0,100% 0,94% 90%,80% 78%,70% 100%,50% 83%,25% 100%,7% 80%)}
+.body{position:absolute;width:315px;height:235px;border-radius:150px 150px 0 0;background:#101722;left:8px;bottom:0}
+.marketing-notes{position:absolute;right:30%;top:35px;display:flex;flex-direction:column;gap:2px;font-family:Pacifico,cursive;font-size:17px;transform:rotate(-2deg)}
+.marketing-notes span{font-size:21px;color:#fff}.marketing-notes small{font-size:15px;color:#f0f2ff}
+.social-icons{position:absolute;right:21%;top:155px;display:flex;gap:12px;transform:rotate(-5deg)}
+.social-icons b{width:43px;height:43px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(145deg,#ff28a6,#7349ff);font-size:23px;box-shadow:0 8px 20px #0005}
+.social-icons b:nth-child(2){background:#ff1e2d}.social-icons b:nth-child(3){background:#1688ed}.social-icons b:nth-child(4){background:#141a29}
+.result-note{position:absolute;right:6%;top:66px;background:#4264b7;padding:14px 22px;border-radius:35% 50% 40% 45%;font-size:21px;font-family:Pacifico,cursive;text-align:center;line-height:1.15;transform:rotate(4deg)}
+.laptop{position:absolute;right:7%;bottom:0;width:300px;height:130px;border:12px solid #657085;border-bottom-width:22px;transform:skew(-9deg);background:#101a28;padding:17px;font-family:Pacifico,cursive;color:#fff;line-height:1.05;font-size:18px}
 
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-}
+.section{padding:58px 6.5%}
+.services{background:#030b18}
+.section-heading{text-align:center;max-width:800px;margin:0 auto 32px}
+.section-heading h2{font-size:32px;line-height:1.15;margin:5px 0 8px}
+.section-heading h2 span{background:linear-gradient(90deg,#a74cff,#00bfff);-webkit-background-clip:text;color:transparent}
+.section-heading>p:last-child{color:#b9c1d2;font-size:14px}
+.service-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;max-width:1280px;margin:auto}
+.card{min-height:190px;padding:20px 14px;text-align:center;border:1px solid #20334b;border-radius:16px;background:linear-gradient(145deg,rgba(13,27,47,.85),rgba(4,14,28,.85));box-shadow:inset 0 1px #ffffff08;transition:.25s}
+.card:hover{transform:translateY(-7px);border-color:#7259ff}
+.icon{width:56px;height:56px;border-radius:50%;margin:0 auto 12px;display:grid;place-items:center;font-size:25px;box-shadow:0 0 22px #0007}
+.purple{background:#6e3dff}.pink{background:#e41b8c}.blue{background:#087fea}.green{background:#00a85a}.orange{background:#f0a400}.cyan{background:#08a9bd}
+.card h3{font-size:14px;margin-bottom:7px}.card p{font-size:12px;color:#c7cfdd}
 
-nav a {
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
+.why{padding-top:45px;background:linear-gradient(180deg,#14182f,#071223);position:relative}
+.why:before{content:"";position:absolute;inset:auto 0 0;height:110px;background:radial-gradient(ellipse at center bottom,#182d50,transparent 65%);opacity:.65}
+.why-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);max-width:900px;margin:auto;gap:30px}
+.why-item{text-align:center}.why-item>b{font-size:36px;display:block;color:#fff;text-shadow:0 0 15px #8c56ff}.why-item:nth-child(3)>b{color:#e678ff}
+.why-item h3{font-size:13px;margin:3px 0}.why-item p{font-size:11px;color:#bbc4d4}
 
-nav a:hover {
-    color: #00bcd4;
-}
+footer{text-align:center;padding:24px;color:#7f8da4;font-size:12px;border-top:1px solid #1c2a3c;background:#030914}
+.reveal{opacity:0;transform:translateY(18px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
 
-.hero {
-    text-align: center;
-    padding: 50px 20px;
+@media(max-width:1000px){
+ nav{gap:18px}.header-btn{display:none}.site-header{padding:0 5%}
+ .hero{grid-template-columns:1fr}.hero-copy{padding:45px 8%;text-align:center}.lead{margin-left:auto;margin-right:auto}
+ .hero-art{min-height:360px}.service-grid{grid-template-columns:repeat(3,1fr)}
 }
-
-.portfolio, .card-container, section {
-    padding: 20px;
-    text-align: center;
+@media(max-width:650px){
+ .site-header{height:65px}.menu{display:block}nav{display:none}.logo span{font-size:30px}.logo b{font-size:14px}
+ .hero h1{font-size:56px}.hero h1 strong{font-size:34px}.hero h2{font-size:18px}
+ .hero-art{min-height:330px}.person-placeholder{transform:scale(.75);transform-origin:bottom left;left:5%}.marketing-notes{right:7%;top:22px}.result-note{right:4%;top:145px;font-size:15px}.laptop{display:none}
+ .service-grid{grid-template-columns:1fr 1fr}.section{padding:45px 5%}.why-grid{grid-template-columns:1fr 1fr;gap:24px}
 }
-
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.card {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    margin: 10px;
-    padding: 20px;
-    flex: 1 1 30%;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.skill-level {
-    background: #00bcd4;
-    height: 10px;
-    margin: 5px 0;
-    border-radius: 5px;
-}
-
-/* Additional styles can be added as needed */
