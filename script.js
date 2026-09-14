@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---- 3D scroll-reveal for cards, timeline steps, skill rows, pulse items ----
-  const revealSelectors = '.service-card, .p-card, .card, .timeline .step, .skill-row, .cta-banner, .pulse-item';
+  const revealSelectors = '.service-card, .p-card, .card, .timeline .step, .skill-row, .cta-banner';
   document.querySelectorAll(revealSelectors).forEach(el => el.classList.add('reveal-3d'));
   const revealTargets = document.querySelectorAll('.reveal-3d');
   if (revealTargets.length) {
@@ -88,47 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { threshold: 0.4 });
     skillBars.forEach(bar => skillObserver.observe(bar));
-  }
-
-  // ---- Live marketing news feed (real RSS, via rss2json — headline + link only) ----
-  const pulseContainer = document.getElementById('marketing-pulse-feed');
-  if (pulseContainer) {
-    const FEED_URL = 'https://www.searchenginejournal.com/feed/';
-    const API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(FEED_URL)}&count=6`;
-    fetch(API)
-      .then(res => res.json())
-      .then(data => {
-        if (data.status !== 'ok' || !data.items || !data.items.length) throw new Error('feed unavailable');
-        pulseContainer.innerHTML = '';
-        const list = document.createElement('div');
-        list.className = 'pulse-list';
-        data.items.slice(0, 6).forEach(item => {
-          const a = document.createElement('a');
-          a.className = 'pulse-item reveal-3d';
-          a.href = item.link;
-          a.target = '_blank';
-          a.rel = 'noopener noreferrer';
-          const date = new Date(item.pubDate);
-          const dateStr = isNaN(date) ? '' : date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-          a.innerHTML = `<span class="pulse-title">${item.title}</span><span class="pulse-meta">${dateStr} · SEJ</span>`;
-          list.appendChild(a);
-        });
-        pulseContainer.appendChild(list);
-        // re-observe the newly injected items for the 3D reveal effect
-        const newItems = pulseContainer.querySelectorAll('.reveal-3d');
-        const obs = new IntersectionObserver((entries) => {
-          entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-              setTimeout(() => entry.target.classList.add('in-view'), i * 60);
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        newItems.forEach(el => obs.observe(el));
-      })
-      .catch(() => {
-        pulseContainer.innerHTML = `<div class="pulse-fallback">Live feed is temporarily unavailable. Read the latest marketing news directly at <a href="https://www.searchenginejournal.com/" target="_blank" rel="noopener noreferrer">Search Engine Journal →</a></div>`;
-      });
   }
 
   if (reduceMotion) return;

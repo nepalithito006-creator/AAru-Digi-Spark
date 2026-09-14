@@ -146,22 +146,6 @@ nav.navbar { max-width: var(--container); margin: 0 auto; padding: 16px 28px; di
 .stat .label { font-size: 0.82rem; color: var(--faint); text-transform: uppercase; letter-spacing: 0.06em; }
 
 /* ============================================
-   Live marketing pulse (real RSS ticker + feed)
-   ============================================ */
-.pulse-banner {
-  display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 0.75rem;
-  color: var(--cyan); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px;
-}
-.pulse-banner .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--magenta); box-shadow: 0 0 10px var(--magenta); animation: blink 1.6s infinite; }
-.pulse-list { display: flex; flex-direction: column; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
-.pulse-item { background: var(--glass); padding: 18px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; text-decoration: none; transition: background 0.2s ease; }
-.pulse-item:hover { background: var(--glass-strong); }
-.pulse-item .pulse-title { color: var(--text); font-size: 0.95rem; font-weight: 500; }
-.pulse-item .pulse-meta { color: var(--faint); font-size: 0.78rem; font-family: var(--mono); white-space: nowrap; }
-.pulse-fallback { padding: 20px 22px; color: var(--muted); font-size: 0.9rem; background: var(--glass); border-radius: var(--radius); border: 1px solid var(--border); }
-.pulse-fallback a { color: var(--cyan); }
-
-/* ============================================
    Section scaffolding
    ============================================ */
 section.block { padding: 90px 0; }
@@ -180,6 +164,7 @@ section.block.tight { padding: 56px 0; }
 .service-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--cyan-soft); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; color: var(--cyan); }
 .service-card h3 { font-size: 1.12rem; margin-bottom: 8px; }
 .service-card p { font-size: 0.94rem; margin: 0; }
+a.service-card { text-decoration: none; color: inherit; }
 
 /* ============================================
    Timeline
@@ -302,5 +287,4 @@ footer .foot-links a:hover { color: var(--cyan); }
   .portfolio-grid, .card-container { grid-template-columns: 1fr; }
   .cta-banner { padding: 32px 22px; }
   #whatsapp-float { width: 52px; height: 52px; bottom: 18px; right: 18px; }
-  .pulse-item { flex-direction: column; align-items: flex-start; gap: 6px; }
 }
