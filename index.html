@@ -1,58 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Aaru Digi Spark</title>
-  <meta name="description" content="Digital creativity hub by Aaru Digi Spark">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="style.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aaru Digi Spark — Digital Marketing Agency</title>
+  <meta name="description" content="Aaru Digi Spark — SEO, social media, branding, web design & analytics." />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="hero">
-    <h1>Welcome to Aaru Digi Spark</h1>
-    <p>Digital Creativity Hub</p>
-    <a href="#projects" class="cta">See My Work</a>
+  <!-- Navbar -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Aaru Digi Spark" />
+        <span>Aaru Digi Spark</span>
+      </a>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button id="darkToggle" class="btn-outline">🌙</button>
+    </div>
   </header>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-    <button id="darkToggle">🌙 Dark Mode</button>
-  </nav>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hello! I’m passionate about digital creativity, coding, and building interactive projects.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="card-container">
-      <div class="card">
-        <h3>Website Development</h3>
-        <p>Modern responsive sites with HTML, CSS, JS.</p>
-      </div>
-      <div class="card">
-        <h3>Game Mods</h3>
-        <p>Custom mods for NFS and other titles.</p>
-      </div>
-      <div class="card">
-        <h3>Data Tools</h3>
-        <p>Preservation and analytics projects.</p>
+  <!-- Hero with video background -->
+  <section class="hero">
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="videos/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="badge">New · Spark v3.2</span>
+      <h1>Ignite Your Brand.<br/>One Clear <em>Spark</em>.</h1>
+      <p>Aaru Digi Spark helps businesses grow with precision-driven digital marketing.</p>
+      <div class="hero-btns">
+        <a href="contact.html" class="btn-primary">Get Started</a>
+        <a href="portfolio.html" class="btn-ghost">See Our Work</a>
       </div>
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email me at: <strong>your-email@example.com</strong></p>
-    <button id="contactBtn">Say Hello</button>
+  <!-- Services grid -->
+  <section class="section" id="services">
+    <h2>Our Services</h2>
+    <div class="grid">
+      <a href="seo.html" class="card"><h3>SEO Optimization</h3><p>Rank higher. Get found.</p></a>
+      <a href="social-media.html" class="card"><h3>Social Media</h3><p>Engage & convert.</p></a>
+      <a href="content-creation.html" class="card"><h3>Content Creation</h3><p>Blogs, videos, graphics.</p></a>
+      <a href="branding.html" class="card"><h3>Branding</h3><p>Stand out visually.</p></a>
+      <a href="web-design.html" class="card"><h3>Web Design</h3><p>Fast, responsive sites.</p></a>
+      <a href="analytics.html" class="card"><h3>Analytics</h3><p>Data that drives growth.</p></a>
+    </div>
   </section>
 
-  <footer>
-    <p>&copy; 2026 Aaru Digi Spark | All Rights Reserved</p>
+  <!-- CTA -->
+  <section class="section cta">
+    <h2>Ready to grow?</h2>
+    <p>Book a free consultation — we'll show you where the quick wins are.</p>
+    <a href="consultation.html" class="btn-primary">Book Free Consultation</a>
+  </section>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Aaru Digi Spark. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
