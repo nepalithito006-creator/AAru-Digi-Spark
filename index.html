@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Cast &amp; Render — 3D Object Studio</title>
+<title>Aaru Digi Spark — Digital Marketing Studio</title>
+<meta name="description" content="Aaru Digi Spark — SEO, social media, branding, content and web design that turns attention into growth." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +21,7 @@
     --ease:cubic-bezier(.22,.61,.36,1);
     --pill-bg:#0a0908;
     --pill-fg:#ffffff;
+    --accent:#ff5a1f;
   }
 
   html{ -webkit-text-size-adjust:100%; }
@@ -35,7 +37,7 @@
     overflow-x:hidden;
   }
 
-  /* ---------- STAGE (fixed video bg) ---------- */
+  /* ---------- STAGE ---------- */
   .stage{
     position:fixed; inset:0; z-index:0; overflow:hidden;
     background:var(--shade);
@@ -61,15 +63,15 @@
     background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");
   }
 
-  /* ---------- SCROLL METER ---------- */
+  /* ---------- METER ---------- */
   .meter{
     position:fixed; top:0; left:0; z-index:50;
     height:2px; width:100%;
     transform:scaleX(0); transform-origin:0 50%;
-    background:var(--fg); opacity:.55;
+    background:var(--accent); opacity:.85;
   }
 
-  /* ---------- CHROME (header) ---------- */
+  /* ---------- CHROME ---------- */
   .chrome{
     position:fixed; left:0; right:0; top:0; z-index:40;
     display:flex; align-items:center; justify-content:space-between; gap:12px;
@@ -81,8 +83,9 @@
     font-size:15px; letter-spacing:-.012em;
     color:var(--fg);
     min-width:0; flex-shrink:1;
+    font-weight:500;
   }
-  .mark-star{ opacity:.85; }
+  .mark-star{ color:var(--accent); }
 
   .nav{
     display:flex; align-items:center; gap:clamp(14px, 2.4vw, 32px);
@@ -109,7 +112,7 @@
   .nav .pill{ color:#fff; -webkit-text-fill-color:#fff; }
   .pill:hover, .pill:focus-visible{
     transform:translateY(-2px);
-    background:#000; color:#fff; -webkit-text-fill-color:#fff;
+    background:var(--accent); color:#fff; -webkit-text-fill-color:#fff;
   }
   .pill:focus-visible{ outline:2px solid var(--fg); outline-offset:2px; }
 
@@ -146,7 +149,9 @@
     margin-bottom:clamp(16px,2vw,22px);
     max-width:min(46ch, 100%);
     text-align:center;
+    text-transform:uppercase;
   }
+  .eyebrow span{ color:var(--accent); }
 
   .panel h1{
     font-weight:400;
@@ -157,6 +162,11 @@
     text-wrap:balance;
     margin:0;
   }
+  .panel h1 em{
+    font-style:italic;
+    font-family:Georgia,'Times New Roman',serif;
+    font-weight:400;
+  }
 
   .sub{
     margin-top:clamp(18px,2.2vw,28px);
@@ -165,6 +175,7 @@
     color:var(--fg-soft);
     max-width:min(46ch, 100%);
     text-wrap:pretty;
+    margin-left:auto; margin-right:auto;
   }
 
   .cta{
@@ -199,7 +210,7 @@
   }
   .bar i{
     display:block; height:100%; width:100%;
-    background:var(--fg);
+    background:var(--accent);
     transform:scaleX(0); transform-origin:0 50%;
   }
 
@@ -265,38 +276,46 @@
 <i class="meter" id="meter"></i>
 
 <header class="chrome">
-  <div class="mark"><span class="mark-star" aria-hidden="true">&#10037;</span>&nbsp;Cast &amp; Render</div>
+  <div class="mark">
+    <span class="mark-star" aria-hidden="true">&#10037;</span>
+    Aaru Digi Spark
+  </div>
   <nav class="nav">
-    <a href="#board">Works</a>
-    <a href="#visit">About</a>
-    <a class="pill" href="#order">Start a brief</a>
+    <a href="services.html">Services</a>
+    <a href="portfolio.html">Work</a>
+    <a class="pill" href="contact.html">Start a project</a>
   </nav>
 </header>
 
 <main class="panels">
+
+  <!-- Panel 1 — Hero -->
   <section class="panel" data-panel>
-    <div class="eyebrow">Objects studio <span>&middot;</span> No. 112 Render Lane</div>
-    <h1>Built at four.<br />Out by seven.</h1>
-    <p class="sub">Six kinds of mesh, one render farm, and a queue that starts before the sun does.</p>
-    <div class="cta"><a class="pill" href="#board">View the reel</a></div>
+    <div class="eyebrow">Digital marketing studio <span>&middot;</span> Kathmandu &amp; beyond</div>
+    <h1>Attention in.<br /><em>Growth</em> out.</h1>
+    <p class="sub">SEO, social, content and paid ads — one team, one strategy, measurable results every month.</p>
+    <div class="cta"><a class="pill" href="services.html">Explore services</a></div>
   </section>
 
+  <!-- Panel 2 — Services / philosophy -->
   <section class="panel" data-panel>
-    <div class="eyebrow">Across the studio</div>
-    <h1>Flat, never bent.</h1>
-    <p class="sub">The mesh should still be clean when it reaches the viewport. We export to order, never before.</p>
-    <div class="cta"><a class="pill" href="#visit">Tour our space</a></div>
+    <div class="eyebrow">What we do</div>
+    <h1>Strategy first.<br />Always.</h1>
+    <p class="sub">We don't chase trends. We build campaigns around your audience, your data, and your goals — then scale what works.</p>
+    <div class="cta"><a class="pill" href="portfolio.html">See our work</a></div>
   </section>
 
+  <!-- Panel 3 — Results / CTA -->
   <section class="panel" data-panel>
-    <div class="eyebrow">The surface</div>
-    <h1>Smooth enough to<br />hold a light pass.</h1>
-    <p class="sub">Custom surface shaders whipped every morning, spread to the edge and weighed by the quarter pound.</p>
-    <div class="cta"><a class="pill" href="#order">Start a brief</a></div>
+    <div class="eyebrow">Real outcomes</div>
+    <h1>Numbers that<br />actually move.</h1>
+    <p class="sub">120% more organic traffic. 3× engagement. Campaigns that pay for themselves. Let's talk about your goals.</p>
+    <div class="cta"><a class="pill" href="consultation.html">Book a free consultation</a></div>
   </section>
+
 </main>
 
-<footer class="foot">112 Render Lane &nbsp;&middot;&nbsp; Tue–Sun, 9am till sold out</footer>
+<footer class="foot">Aaru Digi Spark &nbsp;&middot;&nbsp; Digital marketing, done right.</footer>
 
 <div class="track"></div>
 
@@ -304,8 +323,9 @@
 (function(){
   "use strict";
 
-  // 1920x1080, 10.04s, 241 frames, all-intra — every frame is a keyframe,
-  // which is why a scroll scrub can land on an exact frame instantly.
+  // Video: all-intra encoded (every frame is a keyframe),
+  // so scroll-scrub can land on an exact frame instantly.
+  // Replace with your own hosted file for production, e.g. "videos/hero-bg.mp4"
   var VIDEO_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/45567745-d826-44a2-a5ce-7ef670944e60.mp4";
 
   var clip    = document.getElementById("clip");
@@ -322,7 +342,7 @@
     [0.35, 0.43, 0.57, 0.65],
     [0.77, 0.85, 1.10, 1.20]
   ];
-  var DRIFT = 22; // px of counter-scroll travel per panel
+  var DRIFT = 22;
 
   function clamp(v,a,b){ return v < a ? a : v > b ? b : v; }
   function smooth(t){ return t*t*(3-2*t); }
@@ -407,7 +427,6 @@
     clip.src = src;
     clip.load();
 
-    // never strand the page behind the preloader on a stalled decode
     setTimeout(start, 12000);
   }
 
@@ -433,9 +452,7 @@
 
         function pump(){
           return reader.read().then(function(r){
-            if (r.done){
-              return new Blob(chunks, { type: "video/mp4" });
-            }
+            if (r.done) return new Blob(chunks, { type: "video/mp4" });
             chunks.push(r.value);
             got += r.value.length;
             setProgress(total ? got / total : Math.min(got / 11e6, 0.95));
