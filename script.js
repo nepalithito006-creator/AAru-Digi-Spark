@@ -1,43 +1,38 @@
-// 🌙 Dark Mode Toggle
-document.getElementById("darkToggle").addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-});
+// Year in footer
+document.addEventListener("DOMContentLoaded", () => {
+  const year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 
-// 🎯 Smooth Scrolling for Navigation Links
-document.querySelectorAll('nav a').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
+  // Dark mode toggle
+  const toggle = document.getElementById("darkToggle");
+  const saved = localStorage.getItem("theme");
+  if (saved === "light") document.body.classList.add("light");
+
+  toggle?.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+    localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
+    toggle.textContent = document.body.classList.contains("light") ? "🌙" : "☀️";
+  });
+  if (toggle) toggle.textContent = document.body.classList.contains("light") ? "🌙" : "☀️";
+
+  // Card tilt
+  document.querySelectorAll(".card").forEach((card) => {
+    card.addEventListener("mousemove", (e) => {
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left, y = e.clientY - r.top;
+      const cx = r.width / 2, cy = r.height / 2;
+      card.style.transform = `rotateX(${((y - cy) / cy) * 6}deg) rotateY(${((x - cx) / cx) * 6}deg) translateY(-4px)`;
+    });
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "";
+    });
+  });
+
+  // Contact form (demo)
+  const form = document.querySelector(".form");
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
-    document.querySelector(this.getAttribute('href'))
-      .scrollIntoView({ behavior: 'smooth' });
+    alert("Thanks! We'll get back to you shortly.");
+    form.reset();
   });
 });
-
-// 👋 Greeting in Console
-window.onload = () => {
-  console.log("Welcome to Aaru Digi Spark!");
-};
-
-// 🖼️ Project Card Tilt Effect
-document.querySelectorAll('.card').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * 10;
-    const rotateY = ((x - centerX) / centerX) * 10;
-    card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = "rotateX(0) rotateY(0) scale(1)";
-  });
-});
-
-// 🔔 Contact Button Interaction
-const contactButton = document.querySelector("#contactBtn");
-if (contactButton) {
-  contactButton.addEventListener("click", () => {
-    alert("Thanks for reaching out! I'll get back to you soon.");
-  });
-}
