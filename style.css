@@ -3,13 +3,37 @@ body {
   margin: 0;
   background: #f9f9f9;
   color: #333;
+  line-height: 1.6;
 }
-header {
-  background: #0078D7;
+
+/* Hero Banner */
+.hero {
+  background: linear-gradient(135deg, #0078D7, #00C6FF);
   color: white;
-  padding: 20px;
   text-align: center;
+  padding: 100px 20px;
 }
+.hero h1 {
+  font-size: 3em;
+  margin: 0;
+}
+.hero .cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: white;
+  color: #0078D7;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.hero .cta:hover {
+  background: #005a9e;
+  color: white;
+}
+
+/* Navigation */
 nav {
   display: flex;
   justify-content: center;
@@ -25,23 +49,54 @@ nav a, nav button {
   border: none;
   cursor: pointer;
 }
+
+/* Sections */
 section {
   padding: 50px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
+  animation: fadeIn 1s ease-in;
 }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Project Cards */
+.card-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Footer */
 footer {
   background: #333;
   color: white;
   text-align: center;
   padding: 20px;
 }
+
+/* Dark Mode */
 .dark-mode {
   background: #121212;
   color: #f1f1f1;
 }
-.dark-mode header {
-  background: #222;
+.dark-mode header.hero {
+  background: linear-gradient(135deg, #222, #444);
 }
 .dark-mode nav {
   background: #111;
