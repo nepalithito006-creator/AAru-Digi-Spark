@@ -3,6 +3,18 @@
 document.addEventListener('DOMContentLoaded', () => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // ---- Graceful fallback for photo slots not yet uploaded ----
+  document.querySelectorAll('.photo-slot img').forEach(img => {
+    img.addEventListener('error', () => {
+      const slot = img.closest('.photo-slot');
+      if (slot) {
+        slot.classList.add('missing');
+        slot.setAttribute('data-placeholder', img.alt || 'Photo coming soon');
+        img.remove();
+      }
+    });
+  });
+
   // ---- Nav: current page highlight + mobile menu ----
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   document.querySelectorAll('#nav-links a').forEach(link => {
