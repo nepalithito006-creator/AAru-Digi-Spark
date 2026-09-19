@@ -114,81 +114,39 @@ document.addEventListener('DOMContentLoaded', () => {
     updateWords();
   }
 
-  // ---- Data-network particle background ----
-  const canvas = document.getElementById('starfield');
-  if (canvas) {
-    const ctx = canvas.getContext('2d');
-    let w, h, nodes, pulses = [];
-    const NODE_DENSITY = 0.00007;
-    const LINK_DIST = 140;
-
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      const count = Math.min(Math.round(w * h * NODE_DENSITY), 90);
-      nodes = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25,
-        vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.4 + 1
-      }));
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    document.addEventListener('click', (e) => {
-      for (let i = 0; i < 6; i++) {
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 1.8 + 0.6;
-        pulses.push({ x: e.clientX, y: e.clientY, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, life: 1 });
-      }
+  // ---- 3D mouse-tilt on cards (the "React-app feel" without React) ----
+  if (!reduceMotion) {
+    const tiltTargets = document.querySelectorAll('.service-card, .p-card, .card, .stat-row .stat');
+    tiltTargets.forEach(el => {
+      el.classList.add('tilt-card');
+      el.addEventListener('mousemove', (e) => {
+        const rect = el.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const cx = rect.width / 2, cy = rect.height / 2;
+        const rotateY = ((x - cx) / cx) * 7;
+        const rotateX = ((cy - y) / cy) * 7;
+        el.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = 'perspective(800px) rotateX(0) rotateY(0) translateY(0)';
+      });
     });
+  }
 
-    function draw() {
-      ctx.clearRect(0, 0, w, h);
-
-      nodes.forEach(n => {
-        n.x += n.vx; n.y += n.vy;
-        if (n.x < 0 || n.x > w) n.vx *= -1;
-        if (n.y < 0 || n.y > h) n.vy *= -1;
-      });
-
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < LINK_DIST) {
-            ctx.strokeStyle = `rgba(0,255,240,${0.12 * (1 - dist / LINK_DIST)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      nodes.forEach(n => {
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(0,255,240,0.55)';
-        ctx.fill();
-      });
-
-      pulses.forEach(p => {
-        p.x += p.vx; p.y += p.vy; p.life -= 0.02;
-        if (p.life > 0) {
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, 2 * p.life, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(255,45,149,${p.life})`;
-          ctx.fill();
-        }
-      });
-      pulses = pulses.filter(p => p.life > 0);
-
-      requestAnimationFrame(draw);
+  // ---- Floating aurora orbs: subtle parallax toward the cursor ----
+  if (!reduceMotion) {
+    const orbs = document.querySelectorAll('.orb');
+    if (orbs.length) {
+      window.addEventListener('mousemove', (e) => {
+        const xPct = (e.clientX / window.innerWidth - 0.5) * 2;
+        const yPct = (e.clientY / window.innerHeight - 0.5) * 2;
+        orbs.forEach((orb, i) => {
+          const strength = (i + 1) * 8;
+          orb.style.marginLeft = `${xPct * strength}px`;
+          orb.style.marginTop = `${yPct * strength}px`;
+        });
+      }, { passive: true });
     }
-    draw();
   }
 });
