@@ -1,497 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Aaru Digi Spark — Digital Marketing Studio</title>
-<meta name="description" content="Aaru Digi Spark — SEO, social media, branding, content and web design that turns attention into growth." />
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Aaru Digi Spark is a one-person digital marketing practice offering social media, content creation, SEO, branding, analytics, and consultation for small brands.">
+<link rel="canonical" href="https://nepalithito006-creator.github.io/AAru-Digi-Spark/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Aaru Digi Spark | Digital Marketing">
+<meta property="og:description" content="Aaru Digi Spark is a one-person digital marketing practice offering social media, content creation, SEO, branding, analytics, and consultation for small brands.">
+<meta property="og:url" content="https://nepalithito006-creator.github.io/AAru-Digi-Spark/index.html">
+<meta property="og:image" content="https://nepalithito006-creator.github.io/AAru-Digi-Spark/images/logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Aaru Digi Spark | Digital Marketing">
+<meta name="twitter:description" content="Aaru Digi Spark is a one-person digital marketing practice offering social media, content creation, SEO, branding, analytics, and consultation for small brands.">
+<meta name="twitter:image" content="https://nepalithito006-creator.github.io/AAru-Digi-Spark/images/logo.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://d2ol7oe51mr4n9.cloudfront.net" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&display=swap" rel="stylesheet">
-
-<style>
-  :root{
-    --fg:#0d0c0b;
-    --fg-soft:rgba(13,12,11,.64);
-    --fg-faint:rgba(13,12,11,.42);
-    --shade:#f2f0ec;
-    --rule:rgba(13,12,11,.16);
-    --ease:cubic-bezier(.22,.61,.36,1);
-    --pill-bg:#0a0908;
-    --pill-fg:#ffffff;
-    --accent:#ff5a1f;
-  }
-
-  html{ -webkit-text-size-adjust:100%; }
-
-  body{
-    margin:0;
-    background:var(--shade);
-    color:var(--fg);
-    font-family:'Inter Tight','Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-weight:400;
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    overflow-x:hidden;
-  }
-
-  /* ---------- STAGE ---------- */
-  .stage{
-    position:fixed; inset:0; z-index:0; overflow:hidden;
-    background:var(--shade);
-  }
-  .stage video{
-    position:absolute; top:50%; left:50%;
-    width:100%; height:100%;
-    transform:translate(-50%,-50%) scale(1.02);
-    object-fit:cover;
-    filter:contrast(1.02);
-    will-change:transform;
-  }
-  .veil{
-    position:absolute; inset:0; pointer-events:none;
-    background:
-      linear-gradient(to bottom, rgba(242,240,236,.62) 0%, rgba(242,240,236,.12) 22%, rgba(242,240,236,.12) 78%, rgba(242,240,236,.66) 100%),
-      radial-gradient(100% 80% at 50% 48%, rgba(242,240,236,0) 0%, rgba(242,240,236,.34) 100%),
-      rgba(242,240,236,.20);
-  }
-  .grain{
-    position:absolute; inset:-50%;
-    opacity:.13; mix-blend-mode:multiply; pointer-events:none;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='.5'/></svg>");
-  }
-
-  /* ---------- METER ---------- */
-  .meter{
-    position:fixed; top:0; left:0; z-index:50;
-    height:2px; width:100%;
-    transform:scaleX(0); transform-origin:0 50%;
-    background:var(--accent); opacity:.85;
-  }
-
-  /* ---------- CHROME ---------- */
-  .chrome{
-    position:fixed; left:0; right:0; top:0; z-index:40;
-    display:flex; align-items:center; justify-content:space-between; gap:12px;
-    padding: max(14px, calc(env(safe-area-inset-top, 0px) + 12px)) clamp(16px, 3.4vw, 44px) 14px;
-    background: linear-gradient(to bottom, rgba(242,240,236,.94) 0%, rgba(242,240,236,.78) 72%, rgba(242,240,236,0) 100%);
-  }
-  .mark{
-    display:flex; align-items:center; gap:9px;
-    font-size:15px; letter-spacing:-.012em;
-    color:var(--fg);
-    min-width:0; flex-shrink:1;
-    font-weight:500;
-  }
-  .mark-star{ color:var(--accent); }
-
-  .nav{
-    display:flex; align-items:center; gap:clamp(14px, 2.4vw, 32px);
-    flex-shrink:0;
-  }
-  .nav a:not(.pill){
-    color:var(--fg); text-decoration:none; font-size:14.5px;
-    letter-spacing:-.008em; opacity:.88;
-    transition:opacity .3s var(--ease);
-  }
-  .nav a:not(.pill):hover{ opacity:1; }
-
-  .pill{
-    display:inline-flex; align-items:center; justify-content:center;
-    height:40px; padding:0 21px; border-radius:999px;
-    background:var(--pill-bg); color:var(--pill-fg);
-    font-size:14.5px; font-weight:500; letter-spacing:-.008em;
-    text-decoration:none; white-space:nowrap; opacity:1;
-    border:1px solid rgba(10,9,8,.12);
-    box-shadow:0 1px 0 rgba(255,255,255,.10) inset;
-    -webkit-text-fill-color:var(--pill-fg);
-    transition:transform .4s var(--ease), background .3s var(--ease), color .3s var(--ease);
-  }
-  .nav .pill{ color:#fff; -webkit-text-fill-color:#fff; }
-  .pill:hover, .pill:focus-visible{
-    transform:translateY(-2px);
-    background:var(--accent); color:#fff; -webkit-text-fill-color:#fff;
-  }
-  .pill:focus-visible{ outline:2px solid var(--fg); outline-offset:2px; }
-
-  /* ---------- FOOTER ---------- */
-  .foot{
-    position:fixed; bottom:0; left:0; right:0; z-index:40;
-    display:flex; justify-content:center;
-    padding: 14px clamp(16px, 4vw, 24px) max(16px, calc(env(safe-area-inset-bottom, 0px) + 12px));
-    font-size:12px; line-height:1.45; letter-spacing:.02em;
-    color:var(--fg-faint); text-align:center;
-    pointer-events:none;
-    background: linear-gradient(to top, rgba(242,240,236,.92) 0%, rgba(242,240,236,.72) 72%, rgba(242,240,236,0) 100%);
-  }
-
-  /* ---------- PANELS ---------- */
-  .panels{
-    position:fixed; inset:0; z-index:20;
-    pointer-events:none;
-  }
-  .panel{
-    position:absolute; inset:0;
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center; text-align:center;
-    padding: max(104px, calc(env(safe-area-inset-top, 0px) + 88px)) clamp(20px, 5vw, 60px) max(96px, calc(env(safe-area-inset-bottom, 0px) + 80px));
-    opacity:0;
-    will-change:opacity,transform;
-  }
-
-  .eyebrow{
-    display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
-    gap:6px 12px;
-    font-size:12.5px; letter-spacing:.045em;
-    color:var(--fg-soft);
-    margin-bottom:clamp(16px,2vw,22px);
-    max-width:min(46ch, 100%);
-    text-align:center;
-    text-transform:uppercase;
-  }
-  .eyebrow span{ color:var(--accent); }
-
-  .panel h1{
-    font-weight:400;
-    font-size:clamp(34px, 7.1vw, 104px);
-    line-height:.98;
-    letter-spacing:-.036em;
-    max-width:15ch;
-    text-wrap:balance;
-    margin:0;
-  }
-  .panel h1 em{
-    font-style:italic;
-    font-family:Georgia,'Times New Roman',serif;
-    font-weight:400;
-  }
-
-  .sub{
-    margin-top:clamp(18px,2.2vw,28px);
-    font-size:clamp(15px,1.28vw,19px);
-    line-height:1.5; letter-spacing:-.008em;
-    color:var(--fg-soft);
-    max-width:min(46ch, 100%);
-    text-wrap:pretty;
-    margin-left:auto; margin-right:auto;
-  }
-
-  .cta{
-    margin-top:clamp(28px,3.4vw,44px);
-    pointer-events:auto;
-    width:100%; display:flex; justify-content:center;
-  }
-  .cta .pill{
-    height:48px; padding:0 27px; font-size:15px;
-    max-width:min(100%, 320px);
-  }
-
-  /* ---------- PRELOADER ---------- */
-  .boot{
-    position:fixed; inset:0; z-index:90;
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    gap:16px;
-    background:var(--shade);
-    transition:opacity .7s var(--ease), visibility .7s;
-  }
-  .boot.done{ opacity:0; visibility:hidden; }
-  .boot p{
-    margin:0;
-    font-size:12.5px; letter-spacing:.05em;
-    color:var(--fg-faint);
-  }
-  .bar{
-    width:150px; height:1px;
-    background:var(--rule);
-    overflow:hidden;
-  }
-  .bar i{
-    display:block; height:100%; width:100%;
-    background:var(--accent);
-    transform:scaleX(0); transform-origin:0 50%;
-  }
-
-  /* ---------- SCROLL TRACK ---------- */
-  .track{
-    position:relative; z-index:1;
-    height:560vh; min-height:3200px;
-  }
-
-  /* ---------- RESPONSIVE ---------- */
-  @media (max-width:900px){
-    .veil{
-      background:
-        linear-gradient(to bottom, rgba(242,240,236,.72) 0%, rgba(242,240,236,.18) 24%, rgba(242,240,236,.18) 76%, rgba(242,240,236,.74) 100%),
-        radial-gradient(100% 80% at 50% 48%, rgba(242,240,236,0) 0%, rgba(242,240,236,.40) 100%),
-        rgba(242,240,236,.24);
-    }
-  }
-
-  @media (max-width:720px){
-    .nav a:not(.pill){ display:none; }
-    .mark{ font-size:14px; }
-    .nav .pill{ height:38px; padding:0 16px; font-size:13.5px; }
-    .panel h1{ max-width:12ch; font-size:clamp(30px, 9.8vw, 52px); }
-    .sub{ font-size:15px; max-width:34ch; }
-    .panel{
-      padding: max(92px, calc(env(safe-area-inset-top, 0px) + 76px)) 18px max(88px, calc(env(safe-area-inset-bottom, 0px) + 72px));
-    }
-    .foot{ font-size:11px; max-width:34ch; }
-  }
-
-  @media (max-width:420px){
-    .mark-star{ display:none; }
-    .nav .pill{ height:36px; padding:0 14px; font-size:13px; }
-    .panel h1{ max-width:11ch; font-size:clamp(28px, 10.5vw, 40px); }
-    .eyebrow{ font-size:11px; letter-spacing:.04em; max-width:28ch; }
-    .cta .pill{ width:100%; max-width:280px; height:44px; padding:0 20px; font-size:14px; }
-  }
-
-  @media (max-height:520px) and (orientation:landscape){
-    .panel{
-      padding: max(72px, calc(env(safe-area-inset-top, 0px) + 56px)) 24px max(64px, calc(env(safe-area-inset-bottom, 0px) + 48px));
-    }
-    .panel h1{ font-size:clamp(28px, 8vh, 44px); }
-    .sub{ margin-top:12px; font-size:14px; }
-    .cta{ margin-top:16px; }
-  }
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<title>Aaru Digi Spark | Digital Marketing</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Aaru Digi Spark",
+  "description": "Digital marketing practice offering social media, content creation, SEO, branding, analytics, and consultation for small brands.",
+  "url": "https://nepalithito006-creator.github.io/AAru-Digi-Spark/",
+  "image": "https://nepalithito006-creator.github.io/AAru-Digi-Spark/images/logo.jpg",
+  "areaServed": "Nepal",
+  "founder": { "@type": "Person", "name": "Aaru" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Management" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Content Creation" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Analytics" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultation" } }
+  ]
+}
+</script>
 </head>
 <body>
-
-<div class="boot" id="boot">
-  <div class="bar"><i id="bootBar"></i></div>
-  <p id="bootPct">LOADING 0%</p>
-</div>
-
-<div class="stage">
-  <video id="clip" muted playsinline preload="auto" disablepictureinpicture></video>
-  <div class="veil"></div>
-  <div class="grain"></div>
-</div>
-
-<i class="meter" id="meter"></i>
-
-<header class="chrome">
-  <div class="mark">
-    <span class="mark-star" aria-hidden="true">&#10037;</span>
-    Aaru Digi Spark
-  </div>
-  <nav class="nav">
-    <a href="services.html">Services</a>
-    <a href="portfolio.html">Work</a>
-    <a class="pill" href="contact.html">Start a project</a>
+<canvas id="starfield"></canvas>
+<header id="main-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="Aaru Digi Spark">
+      <span class="brand-word">Aaru Digi Spark</span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div id="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Let's talk</a></li>
+      </ul>
+    </div>
   </nav>
 </header>
 
-<main class="panels">
+<main>
 
-  <!-- Panel 1 — Hero -->
-  <section class="panel" data-panel>
-    <div class="eyebrow">Digital marketing studio <span>&middot;</span> Kathmandu &amp; beyond</div>
-    <h1>Attention in.<br /><em>Growth</em> out.</h1>
-    <p class="sub">SEO, social, content and paid ads — one team, one strategy, measurable results every month.</p>
-    <div class="cta"><a class="pill" href="services.html">Explore services</a></div>
+  <!-- HERO -->
+  <section class="hero-static">
+    <div class="wrap">
+      <span class="eyebrow-mark">System Online · Marketing Command Center</span>
+      <h1>Data-Driven Marketing, <span class="accent">Built for Growth</span></h1>
+      <p class="lede">Real strategy, real SEO analysis, real content — for brands who want to see exactly what's working and why.</p>
+      <div class="hero-actions">
+        <a href="contact.html" class="btn btn-primary">Start a Project →</a>
+        <a href="https://wa.me/9779745347914" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">Chat on WhatsApp</a>
+      </div>
+    </div>
   </section>
 
-  <!-- Panel 2 — Services / philosophy -->
-  <section class="panel" data-panel>
-    <div class="eyebrow">What we do</div>
-    <h1>Strategy first.<br />Always.</h1>
-    <p class="sub">We don't chase trends. We build campaigns around your audience, your data, and your goals — then scale what works.</p>
-    <div class="cta"><a class="pill" href="portfolio.html">See our work</a></div>
+  <div class="stat-row">
+    <div class="stat"><span class="num" data-count="6">0</span><span class="label">Core Services</span></div>
+    <div class="stat"><span class="num" data-count="100">0</span><span class="label">% Creative Focus</span></div>
+    <div class="stat"><span class="num accent">∞</span><span class="label">Ideas on Tap</span></div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="block section-alt">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>What I Can Do <span class="accent">For You</span></h2>
+        <p>Six focused services, picked because they compound — content feeds SEO, SEO feeds growth, growth feeds brand.</p>
+      </div>
+      <div class="service-grid">
+        <a href="social-media.html" class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 1 1 3.5 6.6L4 20l1.2-3.6A7.96 7.96 0 0 1 4 12Z"/></svg></div>
+          <h3>Social Media</h3>
+          <p>Grow your audience and build stronger online engagement.</p>
+        </a>
+        <a href="content-creation.html" class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20 L4.6 16.4 L15.8 5.2 a1.7 1.7 0 0 1 2.4 0 l1.6 1.6 a1.7 1.7 0 0 1 0 2.4 L8.6 20.4 Z"/></svg></div>
+          <h3>Content Creation</h3>
+          <p>Posts, reels, and graphics people want to notice.</p>
+        </a>
+        <a href="seo.html" class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.2" y1="15.2" x2="20.5" y2="20.5"/></svg></div>
+          <h3>SEO</h3>
+          <p>Improve visibility and help the right audience find you.</p>
+        </a>
+        <a href="branding.html" class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3 C7 3 3 7 3 12 c0 3.5 2 4.5 4 4.5 c1.2 0 1.5-1 1-2 c-0.5-1 0-2 1-2 h3 c2.8 0 5-2.2 5-5 C17 4.5 14.7 3 12 3Z"/></svg></div>
+          <h3>Branding</h3>
+          <p>Build a memorable visual identity with purpose.</p>
+        </a>
+        <a href="analytics.html" class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20 V10 M11 20 V4 M18 20 V13"/></svg></div>
+          <h3>Analytics</h3>
+          <p>Use simple insights to make smarter marketing decisions.</p>
+        </a>
+        <a href="consultation.html" class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v11H8l-4 4Z"/></svg></div>
+          <h3>Consultation</h3>
+          <p>Direction and practical support for digital growth.</p>
+        </a>
+      </div>
+    </div>
   </section>
 
-  <!-- Panel 3 — Results / CTA -->
-  <section class="panel" data-panel>
-    <div class="eyebrow">Real outcomes</div>
-    <h1>Numbers that<br />actually move.</h1>
-    <p class="sub">120% more organic traffic. 3× engagement. Campaigns that pay for themselves. Let's talk about your goals.</p>
-    <div class="cta"><a class="pill" href="consultation.html">Book a free consultation</a></div>
+  <!-- SEO & MARKETING ANALYSIS -->
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>SEO &amp; Marketing <span class="accent">Analysis</span></h2>
+        <p>A closer look at what actually moves rankings and results — the analysis behind the strategy, not just buzzwords.</p>
+      </div>
+      <div class="skills-list" style="max-width:100%; margin-bottom: 40px;">
+        <div class="skill-row">
+          <div class="skill-top"><span>Content Quality &amp; Relevance</span><span>~32%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-level="32"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Backlinks &amp; Authority</span><span>~28%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-level="28"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Technical SEO</span><span>~20%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-level="20"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>UX &amp; Core Web Vitals</span><span>~12%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-level="12"></div></div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-top"><span>Local Signals</span><span>~8%</span></div>
+          <div class="skill-track"><div class="skill-fill" data-level="8"></div></div>
+        </div>
+      </div>
+      <p style="font-size:0.85rem; color:var(--faint); max-width:70ch;">Rough industry-consensus weighting, not a precise or proprietary formula — search engines don't publish exact ranking-factor percentages, and actual impact varies by niche and query.</p>
+
+      <div class="service-grid" style="margin-top:40px;">
+        <div class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 20 V10 M11 20 V4 M18 20 V13"/></svg></div>
+          <h3>Technical Audit</h3>
+          <p>Site speed, crawlability, mobile usability, and Core Web Vitals checked and fixed.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.2" y1="15.2" x2="20.5" y2="20.5"/></svg></div>
+          <h3>Keyword Research</h3>
+          <p>Finding the exact phrases your real customers search, not just high-volume guesses.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v11H8l-4 4Z"/></svg></div>
+          <h3>Content Gap Analysis</h3>
+          <p>What competitors rank for that you don't — and whether it's worth chasing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="block section-alt">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>How a Project <span class="accent">Runs</span></h2>
+        <p>Four stages, always in this order.</p>
+      </div>
+      <div class="timeline">
+        <div class="step"><h3>Discover</h3><p>A short conversation about your brand and goals.</p></div>
+        <div class="step"><h3>Plan</h3><p>A content and channel plan scoped to your budget.</p></div>
+        <div class="step"><h3>Create</h3><p>Content and copy get built, scheduled, refined.</p></div>
+        <div class="step"><h3>Grow</h3><p>Weekly checks on what's landing, fast adjustments.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO PREVIEW -->
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>Recent <span class="accent">Work</span></h2>
+        <p>The full case-by-case breakdown lives on the <a href="portfolio.html" style="color:var(--cyan);text-decoration:underline">Portfolio page</a>.</p>
+      </div>
+      <div class="portfolio-grid">
+        <div class="p-card"><span class="tag">Branding</span><h3>Local café identity refresh</h3><p>New logo, signage, and social templates that finally matched the food.</p></div>
+        <div class="p-card"><span class="tag">Social + Content</span><h3>Boutique growth sprint</h3><p>90 days of reels and captions that tripled saved-post rate.</p></div>
+        <div class="p-card"><span class="tag">SEO</span><h3>Service page overhaul</h3><p>Rewrote and restructured five pages to actually rank for local search.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCROLL-REVEAL QUOTE -->
+  <section class="quote-section">
+    <div class="wrap quote-inner">
+      <svg class="quote-mark" viewBox="0 0 44 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 32V19.5C0 8.5 6 1.5 16 0L17.5 4.5C11 6 8 10 8 16H16V32H0Z" fill="#00fff0"/>
+        <path d="M26 32V19.5C26 8.5 32 1.5 42 0L43.5 4.5C37 6 34 10 34 16H42V32H26Z" fill="#00fff0"/>
+      </svg>
+      <p class="quote-text">
+        <span class="word">Good</span><span class="word">marketing</span><span class="word">doesn't</span><span class="word">shout</span><span class="word">louder</span><span class="word">—</span><span class="word">it</span><span class="word">just</span><span class="word">gets</span><span class="word">out</span><span class="word">of</span><span class="word">the</span><span class="word">way</span><span class="word">of</span><span class="word">a</span><span class="word">good</span><span class="word">idea.</span><span class="closing-quote">"</span>
+      </p>
+      <div class="quote-author">
+        <div class="avatar">A</div>
+        <div>
+          <div class="name">Aaru</div>
+          <div class="role">Founder, Aaru Digi Spark</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="block tight">
+    <div class="wrap">
+      <div class="cta-banner">
+        <h2>Let's Turn Your Ideas Into <span class="accent">Real Results</span></h2>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">Let's Talk →</a>
+          <a href="https://wa.me/9779745347914" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp Me</a>
+        </div>
+      </div>
+    </div>
   </section>
 
 </main>
 
-<footer class="foot">Aaru Digi Spark &nbsp;&middot;&nbsp; Digital marketing, done right.</footer>
+<footer>
+  <div class="wrap foot-inner">
+    <p>© 2026 Aaru Digi Spark · Built with HTML, CSS &amp; JavaScript</p>
+    <ul class="foot-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
 
-<div class="track"></div>
-
-<script>
-(function(){
-  "use strict";
-
-  // Video: all-intra encoded (every frame is a keyframe),
-  // so scroll-scrub can land on an exact frame instantly.
-  // Replace with your own hosted file for production, e.g. "videos/hero-bg.mp4"
-  var VIDEO_URL = "https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/45567745-d826-44a2-a5ce-7ef670944e60.mp4";
-
-  var clip    = document.getElementById("clip");
-  var boot    = document.getElementById("boot");
-  var bootBar = document.getElementById("bootBar");
-  var bootPct = document.getElementById("bootPct");
-  var meter   = document.getElementById("meter");
-  var panels  = [].slice.call(document.querySelectorAll("[data-panel]"));
-
-  // cue table: [fadeInStart, fadeInEnd, fadeOutStart, fadeOutEnd] in 0..1
-  // gaps between fadeOutEnd and the next fadeInStart are deliberate dead zones
-  var CUES = [
-    [0.00, 0.00, 0.15, 0.23],
-    [0.35, 0.43, 0.57, 0.65],
-    [0.77, 0.85, 1.10, 1.20]
-  ];
-  var DRIFT = 22;
-
-  function clamp(v,a,b){ return v < a ? a : v > b ? b : v; }
-  function smooth(t){ return t*t*(3-2*t); }
-  function ramp(p,a,b){
-    if (b <= a) return p >= b ? 1 : 0;
-    return smooth(clamp((p-a)/(b-a), 0, 1));
-  }
-
-  var progress = 0;
-  var seekTo   = 0;
-  var seekAt   = 0;
-  var duration = 0;
-  var ready    = false;
-
-  function readScroll(){
-    var max = document.documentElement.scrollHeight - window.innerHeight;
-    progress = max > 0 ? clamp(window.pageYOffset / max, 0, 1) : 0;
-    if (duration) seekTo = progress * duration;
-  }
-
-  function paint(){
-    meter.style.transform = "scaleX(" + progress + ")";
-
-    for (var i = 0; i < panels.length; i++){
-      var el = panels[i];
-      var c  = CUES[i];
-      var enter = ramp(progress, c[0], c[1]);
-      var leave = ramp(progress, c[2], c[3]);
-      var o = enter * (1 - leave);
-      var y = (1 - enter) * DRIFT - leave * DRIFT;
-      el.style.opacity = o;
-      el.style.transform = "translate3d(0," + y + "px,0)";
-      el.style.pointerEvents = o > 0.6 ? "auto" : "none";
-    }
-  }
-
-  function frame(){
-    if (ready && duration){
-      var gap = seekTo - seekAt;
-      if (Math.abs(gap) > 0.0008){
-        seekAt += gap * 0.115; // easing factor — do not change
-        if (clip.readyState >= 2 && !clip.seeking){
-          try { clip.currentTime = seekAt; } catch (e) {}
-        }
-      }
-    }
-    paint();
-    requestAnimationFrame(frame);
-  }
-
-  function setProgress(f){
-    bootBar.style.transform = "scaleX(" + f + ")";
-    bootPct.textContent = "LOADING " + Math.round(f * 100) + "%";
-  }
-
-  var started = false;
-  function start(){
-    if (started) return;
-    started = true;
-    ready = true;
-    boot.classList.add("done");
-    readScroll();
-    seekAt = seekTo;
-  }
-
-  var attached = false;
-  function attach(src){
-    if (attached) return;
-    attached = true;
-
-    clip.addEventListener("loadedmetadata", function(){
-      duration = clip.duration || 0;
-      clip.pause();
-      readScroll();
-      seekAt = seekTo;
-      try { clip.currentTime = seekAt; } catch(e){}
-    });
-    clip.addEventListener("loadeddata",      start);
-    clip.addEventListener("canplaythrough",  start);
-    clip.addEventListener("error",           start);
-
-    clip.src = src;
-    clip.load();
-
-    setTimeout(start, 12000);
-  }
-
-  function preload(){
-    var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    var signal = ctrl ? ctrl.signal : undefined;
-
-    var bail = setTimeout(function(){
-      if (!attached){
-        if (ctrl) try { ctrl.abort(); } catch(e){}
-        setProgress(1);
-        attach(VIDEO_URL);
-      }
-    }, 15000);
-
-    fetch(VIDEO_URL, { signal: signal })
-      .then(function(res){
-        if (!res.ok || !res.body) throw new Error("bad response");
-        var total = parseInt(res.headers.get("content-length") || "0", 10);
-        var reader = res.body.getReader();
-        var chunks = [];
-        var got = 0;
-
-        function pump(){
-          return reader.read().then(function(r){
-            if (r.done) return new Blob(chunks, { type: "video/mp4" });
-            chunks.push(r.value);
-            got += r.value.length;
-            setProgress(total ? got / total : Math.min(got / 11e6, 0.95));
-            return pump();
-          });
-        }
-        return pump();
-      })
-      .then(function(blob){
-        clearTimeout(bail);
-        setProgress(1);
-        attach(URL.createObjectURL(blob));
-      })
-      .catch(function(){
-        clearTimeout(bail);
-        setProgress(1);
-        attach(VIDEO_URL);
-      });
-  }
-
-  // iOS will not paint a frame from a video that has never been played,
-  // so nudge it once on the first interaction and pause immediately.
-  function unlock(){
-    var p = clip.play();
-    if (p && p.then) p.then(function(){ clip.pause(); }).catch(function(){});
-    else clip.pause();
-  }
-  ["touchstart","pointerdown","wheel","keydown"].forEach(function(ev){
-    window.addEventListener(ev, unlock, { once:true, passive:true });
-  });
-
-  window.addEventListener("scroll", readScroll, { passive:true });
-  window.addEventListener("resize", readScroll);
-
-  readScroll();
-  paint();
-  preload();
-  requestAnimationFrame(frame);
-})();
-</script>
+<script src="script.js"></script>
 </body>
 </html>

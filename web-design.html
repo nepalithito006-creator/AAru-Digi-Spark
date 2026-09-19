@@ -1,45 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Design — Aaru Digi Spark</title>
-  <meta name="description" content="Web design and development services." />
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Web design services from Aaru Digi Spark — fast, mobile-first websites built around one clear goal per page.">
+<link rel="canonical" href="https://nepalithito006-creator.github.io/AAru-Digi-Spark/web-design.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Web Design | Aaru Digi Spark">
+<meta property="og:description" content="Web design services from Aaru Digi Spark — fast, mobile-first websites built around one clear goal per page.">
+<meta property="og:url" content="https://nepalithito006-creator.github.io/AAru-Digi-Spark/web-design.html">
+<meta property="og:image" content="https://nepalithito006-creator.github.io/AAru-Digi-Spark/images/logo.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Web Design | Aaru Digi Spark">
+<meta name="twitter:description" content="Web design services from Aaru Digi Spark — fast, mobile-first websites built around one clear goal per page.">
+<meta name="twitter:image" content="https://nepalithito006-creator.github.io/AAru-Digi-Spark/images/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<title>Web Design | Aaru Digi Spark</title>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <a href="index.html" class="brand">
-        <img src="images/logo.png" alt="Aaru Digi Spark" />
-        <span>Aaru Digi Spark</span>
-      </a>
-      <nav class="links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="portfolio.html">Portfolio</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-      <button id="darkToggle" class="btn-outline">🌙</button>
+<canvas id="starfield"></canvas>
+<header id="main-header">
+  <nav class="navbar">
+    <a href="index.html" class="brand">
+      <img src="images/logo.jpg" alt="Aaru Digi Spark">
+      <span class="brand-word">Aaru <span class="accent">Digi Spark</span></span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    <div id="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="contact.html" class="nav-cta">Let's talk</a></li>
+      </ul>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <section class="page-header">
-    <h1>Web Design</h1>
-    <p>Fast, responsive, conversion-focused websites built to grow with you.</p>
-  </section>
-
-  <section class="section">
-    <div class="grid">
-      <div class="card"><h3>UI/UX Design</h3><p>Interfaces that feel obvious to use.</p></div>
-      <div class="card"><h3>Development</h3><p>Hand-coded or WordPress/Shopify — your call.</p></div>
-      <div class="card"><h3>Maintenance</h3><p>Updates, backups, performance monitoring.</p></div>
+<main>
+  <section class="page-hero">
+    <div class="wrap page-hero-grid">
+      <div>
+        <span class="eyebrow">Service</span>
+        <h1>Web Design</h1>
+        <p>Fast, mobile-first websites built around one clear goal per page, so visitors know exactly what to do.</p>
+      </div>
+      <div class="page-hero-art">
+        <svg viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="1.6" xmlns="http://www.w3.org/2000/svg">
+        <rect x="16" y="22" width="68" height="52" rx="4"/><line x1="16" y1="34" x2="84" y2="34"/>
+        <circle cx="24" cy="28" r="1.8" fill="#fff" stroke="none"/><circle cx="30" cy="28" r="1.8" fill="#fff" stroke="none"/><circle cx="36" cy="28" r="1.8" fill="#fff" stroke="none"/>
+        <rect x="24" y="42" width="22" height="24" rx="2" opacity="0.5"/><line x1="52" y1="44" x2="76" y2="44"/><line x1="52" y1="52" x2="76" y2="52"/><line x1="52" y1="60" x2="68" y2="60"/>
+      </svg>
+      </div>
     </div>
   </section>
+  <section class="block">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>What This Actually Means</h2>
+        <p class="intro-text">Web design here means a site that loads fast, works properly on a phone, and guides visitors toward one clear action per page — not a cluttered homepage trying to do everything at once. Simple enough that you can actually update it yourself later.</p>
+      </div>
+    </div>
+  </section>
+  <section class="block section-alt">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>What's <span class="accent">Included</span></h2>
+      </div>
+      <div class="timeline" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="step"><h3>One clear goal per page</h3><p>Every page built around a single action you want visitors to take.</p></div>
+<div class="step"><h3>Fast by default</h3><p>Lightweight pages that load quickly on any connection.</p></div>
+<div class="step"><h3>Mobile-first layout</h3><p>Designed for the phone screen first, then scaled up.</p></div>
+<div class="step"><h3>Easy to maintain</h3><p>Simple structure so future edits don't need a developer.</p></div>
+<div class="step"><h3>SEO-friendly structure</h3><p>Built so search engines can actually read and index it properly.</p></div>
+<div class="step"><h3>Basic analytics setup</h3><p>So you can see real traffic from day one.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="block">
+    <div class="wrap two-col">
+      <div>
+        <h3>Who This Is For</h3>
+        <ul class="check-list">
+          <li>Businesses without a website, or with an outdated one</li>
+<li>Anyone whose current site is slow or hard to use on mobile</li>
+<li>Brands wanting a site they can actually update themselves later</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What You Walk Away With</h3>
+        <ul class="check-list">
+          <li>A site that loads fast and works properly on mobile</li>
+<li>Pages built around one clear action, not clutter</li>
+<li>A structure search engines can actually crawl</li>
+<li>The ability to make basic edits yourself, later</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="block section-alt">
+    <div class="wrap">
+      <div class="block-head">
+        <h2>Common <span class="accent">Questions</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item"><h3>How long does a website take?</h3><p>Typically two to four weeks depending on scope and how quickly feedback comes back.</p></div>
+<div class="faq-item"><h3>Will I be able to edit it myself after?</h3><p>Yes — built simply enough that basic text and image updates don't require a developer.</p></div>
+<div class="faq-item"><h3>Do you handle hosting and domains?</h3><p>I can guide you through setup, though hosting and domain costs are separate from the design work itself.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="block tight">
+    <div class="wrap">
+      <div class="cta-banner">
+        <h2>Ready to get started?</h2>
+        <div style="display:flex; gap:14px; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn-primary">Get in touch →</a>
+          <a href="https://wa.me/9779745347914" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">WhatsApp Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot-inner">
+    <p>© 2026 Aaru Digi Spark · Built with HTML, CSS &amp; JavaScript</p>
+    <ul class="foot-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </div>
+</footer>
 
-  <footer class="footer"><p>© <span id="year"></span> Aaru Digi Spark.</p></footer>
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
